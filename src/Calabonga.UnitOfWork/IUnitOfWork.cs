@@ -99,7 +99,7 @@ namespace Calabonga.UnitOfWork
         void SetAutoDetectChanges(bool value);
 
         /// <summary>
-        /// Last error after save changes fired
+        /// Last error after SaveChanges operation executed
         /// </summary>
         SaveChangesResult LastSaveChangesResult { get; }
     }

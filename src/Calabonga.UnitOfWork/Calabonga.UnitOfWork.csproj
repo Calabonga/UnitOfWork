@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;</TargetFrameworks>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <Authors>Calabonga</Authors>
     <Company>Calabonga SOFT</Company>
     <Description>Unit of Work implementation for EntityFramework Core. Package based over the mediatr pattern (mediatr package used). For more information please see Calabonga.UnitOfWork package. Perhaps, you might find more information on youtube.com/sergeicalabonga and www.calabonga.net</Description>
@@ -14,7 +14,7 @@
     <PackageReleaseNotes>nuget packages updated for EntityFrameworkCore</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://www.calabonga.net</PackageProjectUrl>
-    <FileVersion>1.0.6.0</FileVersion>
+    <FileVersion>1.0.7.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

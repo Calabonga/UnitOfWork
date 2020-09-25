@@ -69,8 +69,7 @@ namespace Calabonga.UnitOfWork
         {
             if (indexFrom > pageIndex)
             {
-                throw new ArgumentException(
-                    $"indexFrom: {indexFrom} > pageIndex: {pageIndex}, must indexFrom <= pageIndex");
+                throw new ArgumentException($"indexFrom: {indexFrom} > pageIndex: {pageIndex}, must indexFrom <= pageIndex");
             }
 
             if (source is IQueryable<T> queryable)
