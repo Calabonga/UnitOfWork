@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp3.1;</TargetFrameworks>
+    <Version>1.0.6</Version>
+    <Authors>Calabonga</Authors>
+    <Company>Calabonga SOFT</Company>
+    <Description>Unit of Work implementation for EntityFramework Core. Package based over the mediatr pattern (mediatr package used). For more information please see Calabonga.UnitOfWork package. Perhaps, you might find more information on youtube.com/sergeicalabonga and www.calabonga.net</Description>
+    <Copyright>Calabonga</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageIconUrl>http://www.calabonga.net/images/logo.png</PackageIconUrl>
+    <PackageTags>Calabonga EntityFrameworkCore UnitOfWork Repository Extenstion Helper unitofowrk entityframework pagination</PackageTags>
+    <PackageReleaseNotes>nuget packages updated for EntityFrameworkCore</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://www.calabonga.net</PackageProjectUrl>
+    <FileVersion>1.0.6.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.AutoHistory" Version="3.1.3" />
+  </ItemGroup>
+
+</Project>
