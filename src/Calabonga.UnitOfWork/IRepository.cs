@@ -218,7 +218,16 @@ namespace Calabonga.UnitOfWork
         /// Gets all entities. This method is not recommended
         /// </summary>
         /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
-        IQueryable<TEntity> GetAll();
+        /// /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
+        IQueryable<TEntity> GetAll(bool disableTracking = true);
+        
+        /// <summary>
+        /// Gets all entities. This method is not recommended
+        /// </summary>
+        /// <param name="selector">The selector for projection.</param>
+        /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
+        /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+        IQueryable<TResult> GetAll<TResult>(Expression<Func<TEntity, TResult>> selector, bool disableTracking = true);
 
         /// <summary>
         /// Gets all entities. This method is not recommended
@@ -239,8 +248,17 @@ namespace Calabonga.UnitOfWork
         /// <summary>
         /// Gets all entities. This method is not recommended
         /// </summary>
+        /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
         /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
-        Task<IList<TEntity>> GetAllAsync();
+        Task<IList<TEntity>> GetAllAsync(bool disableTracking = true);
+        
+        /// <summary>
+        /// Gets all entities. This method is not recommended
+        /// </summary>
+        /// <param name="selector">The selector for projection.</param>
+        /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
+        /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+        Task<IList<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector,bool disableTracking = true);
 
         /// <summary>
         /// Gets all entities. This method is not recommended

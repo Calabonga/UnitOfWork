@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Query;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace Calabonga.UnitOfWork
 {
@@ -50,10 +50,15 @@ namespace Calabonga.UnitOfWork
         /// Gets all entities. This method is not recommended
         /// </summary>
         /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
-        public IQueryable<TEntity> GetAll()
-        {
-            return DbSet;
-        }
+        public IQueryable<TEntity> GetAll(bool disableTracking = true) =>
+            disableTracking
+                ? DbSet.AsNoTracking()
+                : DbSet;
+
+        public IQueryable<TResult> GetAll<TResult>(Expression<Func<TEntity, TResult>> selector, bool disableTracking = true) =>
+            disableTracking
+                ? DbSet.AsNoTracking().Select(selector)
+                : DbSet.Select(selector);
 
         /// <summary>
         /// Gets all entities. This method is not recommended
@@ -92,15 +97,74 @@ namespace Calabonga.UnitOfWork
                 query = query.IgnoreQueryFilters();
             }
 
+            return orderBy != null ? orderBy(query) : query;
+        }
+
+        /// <summary>
+        /// Gets all entities. This method is not recommended
+        /// </summary>
+        /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+        public async Task<IList<TEntity>> GetAllAsync(bool disableTracking = true)
+            => disableTracking
+                ? await DbSet.AsNoTracking().ToListAsync()
+                : await DbSet.ToListAsync();
+
+        /// <summary>
+        /// Gets all entities. This method is not recommended
+        /// </summary>
+        /// <param name="selector">The selector for projection.</param>
+        /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
+        /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+        public async Task<IList<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector, bool disableTracking = true) =>
+            disableTracking
+                ? await DbSet.AsNoTracking().Select(selector).ToListAsync()
+                : await DbSet.Select(selector).ToListAsync();
+
+        /// <summary>
+        /// Gets all entities. This method is not recommended
+        /// </summary>
+        /// <param name="predicate">A function to test each element for a condition.</param>
+        /// <param name="orderBy">A function to order elements.</param>
+        /// <param name="include">A function to include navigation properties</param>
+        /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
+        /// <param name="ignoreQueryFilters">Ignore query filters</param>
+        /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
+        /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
+        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true, bool ignoreQueryFilters = false)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (disableTracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            if (ignoreQueryFilters)
+            {
+                query = query.IgnoreQueryFilters();
+            }
+
             if (orderBy != null)
             {
-                return orderBy(query);
+                return await orderBy(query).ToListAsync();
             }
-            else
-            {
-                return query;
-            }
+
+            return await query.ToListAsync();
         }
+
         /// <summary>
         /// Gets the <see cref="IPagedList{TEntity}"/> based on a predicate, orderby delegate and page information. This method default no-tracking query.
         /// </summary>
@@ -172,7 +236,7 @@ namespace Calabonga.UnitOfWork
                                                            int pageIndex = 0,
                                                            int pageSize = 20,
                                                            bool disableTracking = true,
-                                                           CancellationToken cancellationToken = default(CancellationToken),
+                                                           CancellationToken cancellationToken = default,
                                                            bool ignoreQueryFilters = false)
         {
             IQueryable<TEntity> query = DbSet;
@@ -256,10 +320,8 @@ namespace Calabonga.UnitOfWork
             {
                 return orderBy(query).Select(selector).ToPagedList(pageIndex, pageSize);
             }
-            else
-            {
-                return query.Select(selector).ToPagedList(pageIndex, pageSize);
-            }
+
+            return query.Select(selector).ToPagedList(pageIndex, pageSize);
         }
 
         /// <summary>
@@ -285,7 +347,7 @@ namespace Calabonga.UnitOfWork
                                                                     int pageIndex = 0,
                                                                     int pageSize = 20,
                                                                     bool disableTracking = true,
-                                                                    CancellationToken cancellationToken = default(CancellationToken),
+                                                                    CancellationToken cancellationToken = default,
                                                                     bool ignoreQueryFilters = false)
             where TResult : class
         {
@@ -588,7 +650,7 @@ namespace Calabonga.UnitOfWork
         /// <param name="entity">The entity to insert.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous insert operation.</returns>
-        public virtual ValueTask<EntityEntry<TEntity>> InsertAsync(TEntity entity, CancellationToken cancellationToken = default(CancellationToken))
+        public virtual ValueTask<EntityEntry<TEntity>> InsertAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             return DbSet.AddAsync(entity, cancellationToken);
 
@@ -612,7 +674,7 @@ namespace Calabonga.UnitOfWork
         /// <param name="entities">The entities to insert.</param>
         /// <param name="cancellationToken">A <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous insert operation.</returns>
-        public virtual Task InsertAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default(CancellationToken)) => DbSet.AddRangeAsync(entities, cancellationToken);
+        public virtual Task InsertAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default) => DbSet.AddRangeAsync(entities, cancellationToken);
 
         /// <summary>
         /// Updates the specified entity.
@@ -689,61 +751,6 @@ namespace Calabonga.UnitOfWork
         /// <param name="entities">The entities.</param>
         public virtual void Delete(IEnumerable<TEntity> entities) => DbSet.RemoveRange(entities);
 
-        /// <summary>
-        /// Gets all entities. This method is not recommended
-        /// </summary>
-        /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
-        public async Task<IList<TEntity>> GetAllAsync()
-        {
-            return  await DbSet.ToListAsync();
-        }
-
-        /// <summary>
-        /// Gets all entities. This method is not recommended
-        /// </summary>
-        /// <param name="predicate">A function to test each element for a condition.</param>
-        /// <param name="orderBy">A function to order elements.</param>
-        /// <param name="include">A function to include navigation properties</param>
-        /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
-        /// <param name="ignoreQueryFilters">Ignore query filters</param>
-        /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
-        /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
-        public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> predicate = null, 
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, 
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null, 
-            bool disableTracking = true, bool ignoreQueryFilters = false)
-        {
-            IQueryable<TEntity> query = DbSet;
-
-            if (disableTracking)
-            {
-                query = query.AsNoTracking();
-            }
-
-            if (include != null)
-            {
-                query = include(query);
-            }
-
-            if (predicate != null)
-            {
-                query = query.Where(predicate);
-            }
-
-            if (ignoreQueryFilters)
-            {
-                query = query.IgnoreQueryFilters();
-            }
-
-            if (orderBy != null)
-            {
-                return await orderBy(query).ToListAsync();
-            }
-            else
-            {
-                return await query.ToListAsync();
-            }
-        }
     }
 
 
@@ -890,7 +897,7 @@ namespace Calabonga.UnitOfWork
     /// <summary>
     /// Provides some extension methods for <see cref="IEnumerable{T}"/> to provide paging capability.
     /// </summary>
-    public static class IEnumerablePagedListExtensions
+    public static class EnumerablePagedListExtensions
     {
         /// <summary>
         /// Converts the specified source to <see cref="IPagedList{T}"/> by the specified <paramref name="pageIndex"/> and <paramref name="pageSize"/>.
@@ -935,7 +942,7 @@ namespace Calabonga.UnitOfWork
         /// <param name="indexFrom">The start index value.</param>
         /// <returns>An instance of the inherited from <see cref="IPagedList{T}"/> interface.</returns>
         public static async Task<IPagedList<T>> ToPagedListAsync<T>(this IQueryable<T> source, int pageIndex,
-            int pageSize, int indexFrom = 0, CancellationToken cancellationToken = default(CancellationToken))
+            int pageSize, int indexFrom = 0, CancellationToken cancellationToken = default)
         {
             if (indexFrom > pageIndex)
             {

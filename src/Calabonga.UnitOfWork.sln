@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calabonga.UnitOfWork", "Calabonga.UnitOfWork\Calabonga.UnitOfWork.csproj", "{76FB4A55-02C8-4E34-9D37-57DEF9377D63}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{210E8AC8-AA62-40BC-94A0-2ADF2327287F}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,18 +20,6 @@ Global
 		{76FB4A55-02C8-4E34-9D37-57DEF9377D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76FB4A55-02C8-4E34-9D37-57DEF9377D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76FB4A55-02C8-4E34-9D37-57DEF9377D63}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CFD2E358-2BBD-4C2D-A9BC-3163A62313A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CFD2E358-2BBD-4C2D-A9BC-3163A62313A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CFD2E358-2BBD-4C2D-A9BC-3163A62313A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CFD2E358-2BBD-4C2D-A9BC-3163A62313A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01D34BC3-96ED-48E9-88BD-C3D54725CE9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01D34BC3-96ED-48E9-88BD-C3D54725CE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01D34BC3-96ED-48E9-88BD-C3D54725CE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01D34BC3-96ED-48E9-88BD-C3D54725CE9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9E0698D-2352-4B4C-BE65-34EB546D01E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9E0698D-2352-4B4C-BE65-34EB546D01E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9E0698D-2352-4B4C-BE65-34EB546D01E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9E0698D-2352-4B4C-BE65-34EB546D01E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

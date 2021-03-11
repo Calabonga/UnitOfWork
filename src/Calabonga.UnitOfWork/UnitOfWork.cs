@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Calabonga.UnitOfWork
 {
@@ -81,12 +80,9 @@ namespace Calabonga.UnitOfWork
         /// DbContext disable/enable auto detect changes
         /// </summary>
         /// <param name="value"></param>
-        public void SetAutoDetectChanges(bool value)
-        {
-            DbContext.ChangeTracker.AutoDetectChangesEnabled = value;
-        }
+        public void SetAutoDetectChanges(bool value) => DbContext.ChangeTracker.AutoDetectChangesEnabled = value;
 
-        public SaveChangesResult LastSaveChangesResult { get; private set; }
+        public SaveChangesResult LastSaveChangesResult { get; }
 
 
         #endregion
@@ -99,10 +95,7 @@ namespace Calabonga.UnitOfWork
         /// <returns>An instance of type inherited from <see cref="IRepository{TEntity}"/> interface.</returns>
         public IRepository<TEntity> GetRepository<TEntity>(bool hasCustomRepository = false) where TEntity : class
         {
-            if (_repositories == null)
-            {
-                _repositories = new Dictionary<Type, object>();
-            }
+            _repositories ??= new Dictionary<Type, object>();
 
             // what's the best way to support custom repository?
             if (hasCustomRepository)
@@ -147,7 +140,7 @@ namespace Calabonga.UnitOfWork
         /// <param name="parameters">The parameters.</param>
         /// <returns>An <see cref="IQueryable{T}" /> that contains elements that satisfy the condition specified by raw SQL.</returns>
         public IQueryable<TEntity> FromSqlRaw<TEntity>(string sql, params object[] parameters) where TEntity : class => DbContext.Set<TEntity>().FromSqlRaw(sql, parameters);
-        
+
         /// <summary>
         /// Saves all changes made in this context to the database.
         /// </summary>
@@ -243,9 +236,6 @@ namespace Calabonga.UnitOfWork
         /// </summary>
         /// <param name="rootEntity"> Root entity</param>
         /// <param name="callback">Delegate to convert Object's State properties to Entities entry state.</param>
-        public void TrackGraph(object rootEntity, Action<EntityEntryGraphNode> callback)
-        {
-            DbContext.ChangeTracker.TrackGraph(rootEntity, callback);
-        }
+        public void TrackGraph(object rootEntity, Action<EntityEntryGraphNode> callback) => DbContext.ChangeTracker.TrackGraph(rootEntity, callback);
     }
 }
