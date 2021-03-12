@@ -32,6 +32,13 @@ namespace Calabonga.UnitOfWork
         }
 
         /// <summary>
+        /// Change entity state for patch method on web api.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// /// <param name="state">The entity state.</param>
+        public void ChangeEntityState(TEntity entity, EntityState state) => DbContext.Entry(entity).State = state;
+
+        /// <summary>
         /// Changes the table name. This require the tables in the same database.
         /// </summary>
         /// <param name="table"></param>
@@ -55,10 +62,38 @@ namespace Calabonga.UnitOfWork
                 ? DbSet.AsNoTracking()
                 : DbSet;
 
-        public IQueryable<TResult> GetAll<TResult>(Expression<Func<TEntity, TResult>> selector, bool disableTracking = true) =>
+        /// <summary>
+        /// Gets all entities. This method is not recommended
+        /// </summary>
+        /// <param name="selector">The selector for projection.</param>
+        /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
+        /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+        public IQueryable<TResult> GetAll<TResult>(
+            Expression<Func<TEntity, TResult>> selector,
+            bool disableTracking = true) =>
             disableTracking
                 ? DbSet.AsNoTracking().Select(selector)
                 : DbSet.Select(selector);
+
+        public IQueryable<TResult> GetAll<TResult>(
+            Expression<Func<TEntity, TResult>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            bool disableTracking = true)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (disableTracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            return query.Select(selector);
+        }
 
         /// <summary>
         /// Gets all entities. This method is not recommended
@@ -73,7 +108,9 @@ namespace Calabonga.UnitOfWork
         public IQueryable<TEntity> GetAll(
             Expression<Func<TEntity, bool>> predicate = null,
             Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null, bool disableTracking = true, bool ignoreQueryFilters = false)
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true,
+            bool ignoreQueryFilters = false)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -98,6 +135,40 @@ namespace Calabonga.UnitOfWork
             }
 
             return orderBy != null ? orderBy(query) : query;
+        }
+
+        public IQueryable<TResult> GetAll<TResult>(
+            Expression<Func<TEntity, TResult>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true, bool ignoreQueryFilters = false)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (disableTracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            if (ignoreQueryFilters)
+            {
+                query = query.IgnoreQueryFilters();
+            }
+
+            return orderBy != null
+                ? orderBy(query).Select(selector)
+                : query.Select(selector);
         }
 
         /// <summary>
@@ -165,6 +236,40 @@ namespace Calabonga.UnitOfWork
             return await query.ToListAsync();
         }
 
+        public async Task<IList<TResult>> GetAllAsync<TResult>(
+            Expression<Func<TEntity, TResult>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true, bool ignoreQueryFilters = false)
+        {
+            IQueryable<TEntity> query = DbSet;
+
+            if (disableTracking)
+            {
+                query = query.AsNoTracking();
+            }
+
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+
+            if (ignoreQueryFilters)
+            {
+                query = query.IgnoreQueryFilters();
+            }
+
+            return orderBy != null
+                ? await orderBy(query).Select(selector).ToListAsync()
+                : await query.Select(selector).ToListAsync();
+        }
+
         /// <summary>
         /// Gets the <see cref="IPagedList{TEntity}"/> based on a predicate, orderby delegate and page information. This method default no-tracking query.
         /// </summary>
@@ -177,13 +282,14 @@ namespace Calabonga.UnitOfWork
         /// <param name="ignoreQueryFilters">Ignore query filters</param>
         /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
         /// <remarks>This method default no-tracking query.</remarks>
-        public virtual IPagedList<TEntity> GetPagedList(Expression<Func<TEntity, bool>> predicate = null,
-                                                Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-                                                Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-                                                int pageIndex = 0,
-                                                int pageSize = 20,
-                                                bool disableTracking = true,
-                                                bool ignoreQueryFilters = false)
+        public virtual IPagedList<TEntity> GetPagedList(
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            int pageIndex = 0,
+            int pageSize = 20,
+            bool disableTracking = true,
+            bool ignoreQueryFilters = false)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -230,14 +336,15 @@ namespace Calabonga.UnitOfWork
         /// <param name="ignoreQueryFilters">Ignore query filters</param>
         /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
         /// <remarks>This method default no-tracking query.</remarks>
-        public virtual Task<IPagedList<TEntity>> GetPagedListAsync(Expression<Func<TEntity, bool>> predicate = null,
-                                                           Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-                                                           Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-                                                           int pageIndex = 0,
-                                                           int pageSize = 20,
-                                                           bool disableTracking = true,
-                                                           CancellationToken cancellationToken = default,
-                                                           bool ignoreQueryFilters = false)
+        public virtual Task<IPagedList<TEntity>> GetPagedListAsync(
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            int pageIndex = 0,
+            int pageSize = 20,
+            bool disableTracking = true,
+            CancellationToken cancellationToken = default,
+            bool ignoreQueryFilters = false)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -284,14 +391,15 @@ namespace Calabonga.UnitOfWork
         /// <param name="ignoreQueryFilters">Ignore query filters</param>
         /// <returns>An <see cref="IPagedList{TResult}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
         /// <remarks>This method default no-tracking query.</remarks>
-        public virtual IPagedList<TResult> GetPagedList<TResult>(Expression<Func<TEntity, TResult>> selector,
-                                                         Expression<Func<TEntity, bool>> predicate = null,
-                                                         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-                                                         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-                                                         int pageIndex = 0,
-                                                         int pageSize = 20,
-                                                         bool disableTracking = true,
-                                                         bool ignoreQueryFilters = false)
+        public virtual IPagedList<TResult> GetPagedList<TResult>(
+            Expression<Func<TEntity, TResult>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            int pageIndex = 0,
+            int pageSize = 20,
+            bool disableTracking = true,
+            bool ignoreQueryFilters = false)
             where TResult : class
         {
             IQueryable<TEntity> query = DbSet;
@@ -482,12 +590,13 @@ namespace Calabonga.UnitOfWork
         /// <param name="ignoreQueryFilters">Ignore query filters</param>
         /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
         /// <remarks>This method default no-tracking query.</remarks>
-        public virtual TResult GetFirstOrDefault<TResult>(Expression<Func<TEntity, TResult>> selector,
-                                                  Expression<Func<TEntity, bool>> predicate = null,
-                                                  Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-                                                  Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
-                                                  bool disableTracking = true,
-                                                  bool ignoreQueryFilters = false)
+        public virtual TResult GetFirstOrDefault<TResult>(
+            Expression<Func<TEntity, TResult>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>> include = null,
+            bool disableTracking = true,
+            bool ignoreQueryFilters = false)
         {
             IQueryable<TEntity> query = DbSet;
 
@@ -595,42 +704,182 @@ namespace Calabonga.UnitOfWork
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public virtual int Count(Expression<Func<TEntity, bool>> predicate = null)
-        {
-            if (predicate == null)
-            {
-                return DbSet.Count();
-            }
-            else
-            {
-                return DbSet.Count(predicate);
-            }
-        }
+        public virtual int Count(Expression<Func<TEntity, bool>> predicate = null) =>
+            predicate == null
+                ? DbSet.Count()
+                : DbSet.Count(predicate);
+
+        /// <summary>
+        /// Gets async the count based on a predicate.
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="cancellationToken">cancellation token</param>
+        /// <returns></returns>
+        public async Task<int> CountAsync(
+            Expression<Func<TEntity, bool>> predicate = null,
+            CancellationToken cancellationToken = default) =>
+            predicate == null
+                ? await DbSet.CountAsync(cancellationToken)
+                : await DbSet.CountAsync(predicate, cancellationToken);
+
+        /// <summary>
+        /// Gets the long count based on a predicate.
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public long LongCount(Expression<Func<TEntity, bool>> predicate = null) =>
+            predicate == null
+                ? DbSet.LongCount()
+                : DbSet.LongCount(predicate);
+
+        /// <summary>
+        /// Gets async the long count based on a predicate.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public async Task<long> LongCountAsync(
+            Expression<Func<TEntity, bool>> predicate = null,
+            CancellationToken cancellationToken = default) =>
+            predicate == null
+                ? await DbSet.LongCountAsync(cancellationToken)
+                : await DbSet.LongCountAsync(predicate, cancellationToken);
 
         /// <summary>
         /// Gets the exists based on a predicate.
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public bool Exists(Expression<Func<TEntity, bool>> predicate = null)
-        {
-            if (predicate == null)
-            {
-                return DbSet.Any();
-            }
-            else
-            {
-                return DbSet.Any(predicate);
-            }
-        }
+        public bool Exists(Expression<Func<TEntity, bool>> predicate = null) =>
+            predicate == null
+                ? DbSet.Any()
+                : DbSet.Any(predicate);
+
+        /// <summary>
+        /// Gets the Async Exists record based on a predicate.
+        /// </summary>
+        /// <param name="cancellationToken"></param>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        public async Task<bool> ExistsAsync(
+            Expression<Func<TEntity, bool>> selector = null,
+            CancellationToken cancellationToken = default) =>
+            selector == null
+                ? await DbSet.AnyAsync(cancellationToken)
+                : await DbSet.AnyAsync(selector, cancellationToken);
+
+        /// <summary>
+        /// Gets the max based on a predicate.
+        /// </summary>
+        /// <param name="predicate"></param>
+        ///  /// <param name="selector"></param>
+        /// <returns>decimal</returns>
+        public T Max<T>(
+            Expression<Func<TEntity, T>> selector,
+            Expression<Func<TEntity, bool>> predicate = null) =>
+            predicate == null
+                ? DbSet.Max(selector)
+                : DbSet.Where(predicate).Max(selector);
+
+        /// <summary>
+        /// Gets the async max based on a predicate.
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <param name="cancellationToken"></param>
+        /// <param name="predicate"></param>
+        /// <returns>decimal</returns>
+        public Task<T> MaxAsync<T>(
+            Expression<Func<TEntity, T>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            CancellationToken cancellationToken = default) =>
+            predicate is null
+                ? DbSet.MaxAsync(selector, cancellationToken)
+                : DbSet.Where(predicate).MaxAsync(selector, cancellationToken);
+
+        /// <summary>
+        /// Gets the min based on a predicate.
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <param name="predicate"></param>
+        /// <returns>decimal</returns>
+        public T Min<T>(
+            Expression<Func<TEntity, T>> selector,
+            Expression<Func<TEntity, bool>> predicate = null) => 
+            predicate is null
+                ? DbSet.Min(selector)
+                : DbSet.Where(predicate).Min(selector);
+
+        /// <summary>
+        /// Gets the async min based on a predicate.
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="selector"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>decimal</returns>
+        public Task<T> MinAsync<T>(
+            Expression<Func<TEntity, T>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            CancellationToken cancellationToken = default) => 
+            predicate is null
+                ? DbSet.MinAsync(selector, cancellationToken)
+                : DbSet.Where(predicate).MinAsync(selector, cancellationToken);
+
+        public decimal Average(
+            Expression<Func<TEntity, decimal>> selector,
+            Expression<Func<TEntity, bool>> predicate = null) =>
+            predicate is null
+                ? DbSet.Average(selector)
+                : DbSet.Where(predicate).Average(selector);
+
+        /// <summary>
+        /// Gets the async average based on a predicate.
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <param name="predicate"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>decimal</returns>
+        public Task<decimal> AverageAsync(
+            Expression<Func<TEntity, decimal>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            CancellationToken cancellationToken = default) =>
+            predicate is null
+                ? DbSet.AverageAsync(selector, cancellationToken)
+                : DbSet.Where(predicate).AverageAsync(selector, cancellationToken);
+
+        /// <summary>
+        /// Gets the sum based on a predicate.
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <param name="predicate"></param>
+        /// <returns>decimal</returns>
+        public decimal Sum(
+            Expression<Func<TEntity, decimal>> selector,
+            Expression<Func<TEntity, bool>> predicate = null) =>
+            predicate is null
+                ? DbSet.Sum(selector)
+                : DbSet.Where(predicate).Sum(selector);
+
+        /// <summary>
+        /// Gets the async sum based on a predicate.
+        /// </summary>
+        /// <param name="selector"></param>
+        /// <param name="predicate"></param>
+        /// <param name="cancellationToken"></param>
+        /// ///
+        /// <returns>decimal</returns>
+        public Task<decimal> SumAsync(
+            Expression<Func<TEntity, decimal>> selector,
+            Expression<Func<TEntity, bool>> predicate = null,
+            CancellationToken cancellationToken = default) =>
+            predicate is null
+                ? DbSet.SumAsync(selector, cancellationToken)
+                : DbSet.Where(predicate).SumAsync(selector, cancellationToken);
+
         /// <summary>
         /// Inserts a new entity synchronously.
         /// </summary>
         /// <param name="entity">The entity to insert.</param>
-        public virtual TEntity Insert(TEntity entity)
-        {
-            return DbSet.Add(entity).Entity;
-        }
+        public virtual TEntity Insert(TEntity entity) => DbSet.Add(entity).Entity;
 
         /// <summary>
         /// Inserts a range of entities synchronously.
