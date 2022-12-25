@@ -22,5 +22,9 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.12" />
     </ItemGroup>
+
+	<ItemGroup>
+		<None Include="logo.png" Pack="true" PackagePath="\"/>
+	</ItemGroup>
     
 </Project>
