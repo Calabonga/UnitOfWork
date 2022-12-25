@@ -1,26 +1,34 @@
-name: .NET Core
+name: Publish NuGet Package
 
 on:
   push:
-    branches: [ master ]
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.0.101
-    - name: Install dependencies
-      run: dotnet restore src/Calabonga.UnitOfWork.sln
-    - name: Build
-      run: dotnet build src/Calabonga.UnitOfWork.sln --configuration Release --no-restore 
-    - name: Publish Calabonga.UnitOfWork package
-      uses: brandedoutcast/publish-nuget@v2.5.2
-      with:
-          PROJECT_FILE_PATH: src/Calabonga.UnitOfWork/Calabonga.UnitOfWork.csproj
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
+      - uses: actions/checkout@v3
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+      
+      - name: Install dependencies
+        run: dotnet restore src/Calabonga.UnitOfWork.sln
+
+      - name: Build
+        run: dotnet build src/Calabonga.UnitOfWork.sln --configuration Release --no-restore 
+
+      - name: Build the NuGet package
+        run: dotnet pack src/Calabonga.UnitOfWork.sln --configuration Release --output ${{env.DOTNET_ROOT}}\Package
+
+      - name: Publish NuGet Package
+        run: dotnet nuget push ${{env.DOTNET_ROOT}}\Package\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        
