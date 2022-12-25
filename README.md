@@ -10,7 +10,10 @@
 * Удалена сборка AutoHistory по причине отсутствия поддержки ее NET6.0.
 
 # Ссылки 
-[EntityFramework Core и паттерны "Unit of Work" и "Repository" (ru)](https://www.calabonga.net/blog/post/entityframework-unitofwork-and-repository) 
+
+* [EntityFramework Core и паттерны "Unit of Work" и "Repository" (ru)](https://www.calabonga.net/blog/post/entityframework-unitofwork-and-repository) 
+* [Документация API](https://calabonga.github.io/UnitOfWork/api/index.html)
+
 
 ## Комментарии, пожелания, замечания
 
