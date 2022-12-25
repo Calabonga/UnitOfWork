@@ -27,7 +27,7 @@ jobs:
         run: dotnet build src/Calabonga.UnitOfWork.sln --configuration Release --no-restore 
 
       - name: Build the NuGet package
-        run: dotnet pack --configuration Release --output ${{env.DOTNET_ROOT}}\Package
+        run: dotnet pack src/Calabonga.UnitOfWork.sln --configuration Release --output ${{env.DOTNET_ROOT}}\Package
 
       - name: Publish NuGet Package
         run: dotnet nuget push ${{env.DOTNET_ROOT}}\Package\*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
