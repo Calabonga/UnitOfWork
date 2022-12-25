@@ -1,0 +1,323 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Projects/UnitOfWork/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.EnumerablePagedListExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.EnumerablePagedListExtensions.html",
+          "hash": "3S1YtFwIpPTx+wFW/7WCC0UZxtGBzYEcp0Y9i3b4yxE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.ExceptionHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.ExceptionHelper.html",
+          "hash": "W0nXwYIWQa1XgICAx3RJUy1GP4iG0bJ9Es7IkBNiA3Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.IPagedList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.IPagedList-1.html",
+          "hash": "mxBHk5M/kn/w4mq48VcdnGWsbP3+dF/TyVIfhQu2zxc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.IQueryablePageListExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.IQueryablePageListExtensions.html",
+          "hash": "fmUnuSX6DgsHmJsF1SI5LIoUBqaIlmbFNEpwBAPbSxU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.IRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.IRepository-1.html",
+          "hash": "sE6Xmk1y/leB6wL6xXgzuEp2mKzanUp3E95RU+O9HTc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.IRepositoryFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.IRepositoryFactory.html",
+          "hash": "jEtfARFbj87niT/ENUONcN3xZCgV4guoVQYj3fj+fVU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork-1.html",
+          "hash": "kThIMwO370dPh0sVsgEEDSwGk63yX4sNa5SV8FdhmlY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork.html",
+          "hash": "UT01pytVbPlsRw2hQCirauoDSRYZmZNnhJdgz/GSYIc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.PagedList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.PagedList-1.html",
+          "hash": "Za+2ekgQEvcTaBWgHefFiarQGShFDxNJsySqN11g4Us="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.PagedList-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.PagedList-2.html",
+          "hash": "Cl3oqsjmN3rLpVs9gLq0FqtmBW75QcsDQ7ZaHg+k4MY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.PagedList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.PagedList.html",
+          "hash": "VyVr2FRk2dOGvp6GTyknAG936rE4O3GhBNK5Tu7ieK4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.Repository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.Repository-1.html",
+          "hash": "2ffQhReJf8qTVcH2An96UjbATqtFp1NabciBo6raThI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.SaveChangesResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.SaveChangesResult.html",
+          "hash": "THZZAAlb5nxTlDAoJEUVofnDPcXbcqWZ5OddDyESvLM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.UnitOfWork-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.UnitOfWork-1.html",
+          "hash": "wb2QvProjqGVOMeSE2GakDnS6usS4/4sTDdxVOryaAU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.html",
+          "hash": "mA2RILrIc9TEGtevEEhvlLF9s6O3pkskbfCNxi/XgoU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Calabonga.UnitOfWork.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Calabonga.UnitOfWork.html",
+          "hash": "2yCy9YdhmRAmklDkm3pJ5an5qu0wtE/nBqi9mS57tW8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "HKdXOr//EtVVNBRs2kqjwFDQG1nVEE6n5shMA82RUNc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "Vx260mtunSNtV/0dECaLn8SeWH8QjuRwirqjdlnC6u0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "1DhpoRyMn4elEfAnEIFxqj9OcJZNbQ9LcPRdFtfqTSg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "PU0Iutkz7eenvqTyOQh718cxGWRktOZhIqIm7223QxM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 2
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 16,
+          "skipped_file_count": 16
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

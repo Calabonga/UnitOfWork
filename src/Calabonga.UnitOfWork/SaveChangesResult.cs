@@ -6,7 +6,7 @@ namespace Calabonga.UnitOfWork;
 /// <summary>
 /// Represent operation result for SaveChanges.
 /// </summary>
-public class SaveChangesResult
+public sealed class SaveChangesResult
 {
     /// <summary>
     /// Ctor
@@ -14,7 +14,7 @@ public class SaveChangesResult
     public SaveChangesResult() => Messages = new List<string>();
 
     /// <inheritdoc />
-    public SaveChangesResult(string message):this() => AddMessage(message);
+    public SaveChangesResult(string message) : this() => AddMessage(message);
 
     /// <summary>
     /// Last Exception you can find here
