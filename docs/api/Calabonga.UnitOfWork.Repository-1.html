@@ -920,13 +920,13 @@
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetAll_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAll*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAll_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetAll(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAll_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetAll(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets all entities. This method is not recommended</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IQueryable&lt;TEntity&gt; GetAll(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public IQueryable&lt;TEntity&gt; GetAll(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -968,6 +968,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -986,7 +992,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetAll_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetAll_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Ex: This method defaults to a read-only, no-tracking query.</p>
 </div>
   
@@ -1125,13 +1131,13 @@
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetAll_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAll*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAll__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAll``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetAll&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAll__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAll``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetAll&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets all entities. This method is not recommended</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IQueryable&lt;TResult&gt; GetAll&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public IQueryable&lt;TResult&gt; GetAll&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1179,6 +1185,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1212,7 +1224,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetAll__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetAll__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Ex: This method defaults to a read-only, no-tracking query.</p>
 </div>
   
@@ -1262,13 +1274,13 @@
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetAllAsync_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAllAsync*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAllAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetAllAsync(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAllAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetAllAsync(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets all entities. This method is not recommended</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IList&lt;TEntity&gt;&gt; GetAllAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IList&lt;TEntity&gt;&gt; GetAllAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1310,6 +1322,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1328,7 +1346,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetAllAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetAllAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Ex: This method defaults to a read-only, no-tracking query.</p>
 </div>
   
@@ -1400,12 +1418,13 @@
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetAllAsync_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAllAsync*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAllAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAllAsync``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetAllAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetAllAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetAllAsync``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetAllAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Gets all entities. This method is not recommended</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;IList&lt;TResult&gt;&gt; GetAllAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;IList&lt;TResult&gt;&gt; GetAllAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1420,32 +1439,44 @@
       <tr>
         <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;TEntity, TResult&gt;&gt;</td>
         <td><span class="parametername">selector</span></td>
-        <td></td>
+        <td><p>A function to project selected items</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Linq.Expressions.Expression</span>&lt;<span class="xref">System.Func</span>&lt;TEntity, <span class="xref">System.Boolean</span>&gt;&gt;</td>
         <td><span class="parametername">predicate</span></td>
-        <td></td>
+        <td><p>A function to test each element for a condition.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Linq.IQueryable</span>&lt;TEntity&gt;, <span class="xref">System.Linq.IOrderedQueryable</span>&lt;TEntity&gt;&gt;</td>
         <td><span class="parametername">orderBy</span></td>
-        <td></td>
+        <td><p>A function to order elements.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Linq.IQueryable</span>&lt;TEntity&gt;, <span class="xref">Microsoft.EntityFrameworkCore.Query.IIncludableQueryable</span>&lt;TEntity, <span class="xref">System.Object</span>&gt;&gt;</td>
         <td><span class="parametername">include</span></td>
-        <td></td>
+        <td><p>A function to include navigation properties</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">disableTracking</span></td>
-        <td></td>
+        <td><p><code>true</code> to disable changing tracking; otherwise, <code>false</code>. Default to <code>true</code>.</p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">ignoreQueryFilters</span></td>
-        <td></td>
+        <td><p>Ignore query filters</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1482,13 +1513,13 @@
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefault*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetFirstOrDefault(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetFirstOrDefault(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method default no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TEntity GetFirstOrDefault(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public TEntity GetFirstOrDefault(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1530,6 +1561,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1548,19 +1585,19 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This method default no-tracking query.</p>
 </div>
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefault*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefault``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetFirstOrDefault&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method default no-tracking query.</p>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefault``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetFirstOrDefault&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method defaults to a read-only, no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TResult GetFirstOrDefault&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public TResult GetFirstOrDefault&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1599,13 +1636,19 @@
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">disableTracking</span></td>
-        <td><p><code>True</code> to disable changing tracking; otherwise, <code>false</code>. Default to <code>true</code>.</p>
+        <td><p><code>true</code> to disable changing tracking; otherwise, <code>false</code>. Default to <code>true</code>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">ignoreQueryFilters</span></td>
         <td><p>Ignore query filters</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
 </td>
       </tr>
     </tbody>
@@ -1641,19 +1684,19 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This method default no-tracking query.</p>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefault__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method defaults to a read-only, no-tracking query.</p>
 </div>
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefaultAsync*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetFirstOrDefaultAsync(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefaultAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetFirstOrDefaultAsync(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method defaults to a read-only, no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; GetFirstOrDefaultAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TEntity&gt; GetFirstOrDefaultAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1695,6 +1738,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1713,19 +1762,19 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Ex: This method defaults to a read-only, no-tracking query.</p>
 </div>
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefaultAsync*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefaultAsync``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean)">GetFirstOrDefaultAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetFirstOrDefaultAsync``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Boolean,System.Boolean,System.Boolean)">GetFirstOrDefaultAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method defaults to a read-only, no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;TResult&gt; GetFirstOrDefaultAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;TResult&gt; GetFirstOrDefaultAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1771,6 +1820,12 @@
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">ignoreQueryFilters</span></td>
         <td><p>Ignore query filters</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
 </td>
       </tr>
     </tbody>
@@ -1806,19 +1861,19 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetFirstOrDefaultAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Ex: This method defaults to a read-only, no-tracking query.</p>
 </div>
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetPagedList_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedList*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedList_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedList(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Boolean)">GetPagedList(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedList_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedList(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean)">GetPagedList(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Calabonga.UnitOfWork.IPagedList-1.html">IPagedList&lt;T&gt;</a> based on a predicate, orderBy delegate and page information. This method default no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IPagedList&lt;TEntity&gt; GetPagedList(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public IPagedList&lt;TEntity&gt; GetPagedList(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1872,6 +1927,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1890,19 +1951,19 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedList_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedList_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This method default no-tracking query.</p>
 </div>
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetPagedList_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedList*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedList__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedList``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Boolean)">GetPagedList&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedList__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedList``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean)">GetPagedList&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Calabonga.UnitOfWork.IPagedList-1.html">IPagedList&lt;T&gt;</a> based on a predicate, orderBy delegate and page information. This method default no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IPagedList&lt;TResult&gt; GetPagedList&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, bool ignoreQueryFilters = false)
+    <pre><code class="lang-csharp hljs">public IPagedList&lt;TResult&gt; GetPagedList&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)
     where TResult : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -1961,6 +2022,12 @@
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">ignoreQueryFilters</span></td>
         <td><p>Ignore query filters</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
 </td>
       </tr>
     </tbody>
@@ -1996,19 +2063,19 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedList__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedList__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This method default no-tracking query.</p>
 </div>
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedListAsync*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Threading.CancellationToken,System.Boolean)">GetPagedListAsync(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, CancellationToken, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedListAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Threading.CancellationToken,System.Boolean,System.Boolean)">GetPagedListAsync(Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, CancellationToken, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Calabonga.UnitOfWork.IPagedList-1.html">IPagedList&lt;T&gt;</a> based on a predicate, orderBy delegate and page information. This method default no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;TEntity&gt;&gt; GetPagedListAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, CancellationToken cancellationToken = default(CancellationToken), bool ignoreQueryFilters = false)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;TEntity&gt;&gt; GetPagedListAsync(Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, CancellationToken cancellationToken = default(CancellationToken), bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2068,6 +2135,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -2086,19 +2159,19 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This method default no-tracking query.</p>
 </div>
   
   
   <a id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedListAsync*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedListAsync``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Threading.CancellationToken,System.Boolean)">GetPagedListAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, CancellationToken, Boolean)</h4>
+  <h4 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean_System_Boolean_" data-uid="Calabonga.UnitOfWork.Repository`1.GetPagedListAsync``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.Func{System.Linq.IQueryable{`0},Microsoft.EntityFrameworkCore.Query.IIncludableQueryable{`0,System.Object}},System.Int32,System.Int32,System.Boolean,System.Threading.CancellationToken,System.Boolean,System.Boolean)">GetPagedListAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt;, Expression&lt;Func&lt;TEntity, Boolean&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt;, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, Object&gt;&gt;, Int32, Int32, Boolean, CancellationToken, Boolean, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the <a class="xref" href="Calabonga.UnitOfWork.IPagedList-1.html">IPagedList&lt;T&gt;</a> based on a predicate, orderBy delegate and page information. This method default no-tracking query.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;TResult&gt;&gt; GetPagedListAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, CancellationToken cancellationToken = default(CancellationToken), bool ignoreQueryFilters = false)
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;TResult&gt;&gt; GetPagedListAsync&lt;TResult&gt;(Expression&lt;Func&lt;TEntity, TResult&gt;&gt; selector, Expression&lt;Func&lt;TEntity, bool&gt;&gt; predicate = null, Func&lt;IQueryable&lt;TEntity&gt;, IOrderedQueryable&lt;TEntity&gt;&gt; orderBy = null, Func&lt;IQueryable&lt;TEntity&gt;, IIncludableQueryable&lt;TEntity, object&gt;&gt; include = null, int pageIndex = 0, int pageSize = 20, bool disableTracking = true, CancellationToken cancellationToken = default(CancellationToken), bool ignoreQueryFilters = false, bool ignoreAutoIncludes = false)
     where TResult : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
@@ -2165,6 +2238,12 @@
         <td><p>Ignore query filters</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">ignoreAutoIncludes</span></td>
+        <td><p>Ignore automatic includes</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -2198,7 +2277,7 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean__remarks">Remarks</h5>
+  <h5 id="Calabonga_UnitOfWork_Repository_1_GetPagedListAsync__1_System_Linq_Expressions_Expression_System_Func__0___0___System_Linq_Expressions_Expression_System_Func__0_System_Boolean___System_Func_System_Linq_IQueryable__0__System_Linq_IOrderedQueryable__0___System_Func_System_Linq_IQueryable__0__Microsoft_EntityFrameworkCore_Query_IIncludableQueryable__0_System_Object___System_Int32_System_Int32_System_Boolean_System_Threading_CancellationToken_System_Boolean_System_Boolean__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This method default no-tracking query.</p>
 </div>
   
@@ -2993,35 +3072,6 @@
         <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;TEntity&gt;</td>
         <td><span class="parametername">entities</span></td>
         <td><p>The entities.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Calabonga_UnitOfWork_Repository_1_UpdateAsync_" data-uid="Calabonga.UnitOfWork.Repository`1.UpdateAsync*"></a>
-  <h4 id="Calabonga_UnitOfWork_Repository_1_UpdateAsync__0_" data-uid="Calabonga.UnitOfWork.Repository`1.UpdateAsync(`0)">UpdateAsync(TEntity)</h4>
-  <div class="markdown level1 summary"><p>Updates the specified entity.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void UpdateAsync(TEntity entity)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">TEntity</span></td>
-        <td><span class="parametername">entity</span></td>
-        <td><p>The entity.</p>
 </td>
       </tr>
     </tbody>

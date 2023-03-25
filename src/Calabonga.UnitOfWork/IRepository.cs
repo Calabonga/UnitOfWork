@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Query;
 
 namespace Calabonga.UnitOfWork;
 
@@ -28,6 +28,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="pageSize">The size of the page.</param>
     /// <param name="disableTracking"><c>True</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
     IPagedList<TEntity> GetPagedList(
@@ -37,7 +38,8 @@ public interface IRepository<TEntity> where TEntity : class
         int pageIndex = 0,
         int pageSize = 20,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets the <see cref="IPagedList{TEntity}"/> based on a predicate, orderBy delegate and page information. This method default no-tracking query.
@@ -52,6 +54,7 @@ public interface IRepository<TEntity> where TEntity : class
     ///     A <see cref="CancellationToken" /> to observe while waiting for the task to complete.
     /// </param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
     Task<IPagedList<TEntity>> GetPagedListAsync(
@@ -62,7 +65,8 @@ public interface IRepository<TEntity> where TEntity : class
         int pageSize = 20,
         bool disableTracking = true,
         CancellationToken cancellationToken = default,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets the <see cref="IPagedList{TResult}"/> based on a predicate, orderBy delegate and page information. This method default no-tracking query.
@@ -75,6 +79,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="pageSize">The size of the page.</param>
     /// <param name="disableTracking"><c>True</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TResult}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
     IPagedList<TResult> GetPagedList<TResult>(
@@ -85,7 +90,8 @@ public interface IRepository<TEntity> where TEntity : class
         int pageIndex = 0,
         int pageSize = 20,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false) where TResult : class;
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false) where TResult : class;
 
     /// <summary>
     /// Gets the <see cref="IPagedList{TEntity}"/> based on a predicate, orderBy delegate and page information. This method default no-tracking query.
@@ -101,6 +107,7 @@ public interface IRepository<TEntity> where TEntity : class
     ///     A <see cref="CancellationToken" /> to observe while waiting for the task to complete.
     /// </param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
     Task<IPagedList<TResult>> GetPagedListAsync<TResult>(
@@ -112,7 +119,8 @@ public interface IRepository<TEntity> where TEntity : class
         int pageSize = 20,
         bool disableTracking = true,
         CancellationToken cancellationToken = default,
-        bool ignoreQueryFilters = false) where TResult : class;
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false) where TResult : class;
 
     #endregion
 
@@ -126,6 +134,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method defaults to a read-only, no-tracking query.</remarks>
     TEntity? GetFirstOrDefault(
@@ -133,7 +142,8 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method defaults to a read-only, no-tracking query.
@@ -144,6 +154,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method defaults to a read-only, no-tracking query.</remarks>
     TResult? GetFirstOrDefault<TResult>(
@@ -152,7 +163,8 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method defaults to a read-only, no-tracking query.
@@ -163,6 +175,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
     Task<TResult?> GetFirstOrDefaultAsync<TResult>(
@@ -171,7 +184,8 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets the first or default entity based on a predicate, orderBy delegate and include delegate. This method defaults to a read-only, no-tracking query.
@@ -181,13 +195,17 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query. </remarks>
-    Task<TEntity?> GetFirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null,
+    Task<TEntity?> GetFirstOrDefaultAsync
+    (
+        Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     #endregion
 
@@ -256,6 +274,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
     IQueryable<TEntity> GetAll(
@@ -263,7 +282,8 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets all entities. This method is not recommended
@@ -274,6 +294,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
     IQueryable<TResult> GetAll<TResult>(
@@ -282,7 +303,8 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets all entities. This method is not recommended
@@ -309,6 +331,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
     Task<IList<TEntity>> GetAllAsync(
@@ -316,7 +339,8 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     /// <summary>
     /// Gets all entities. This method is not recommended
@@ -327,6 +351,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="include">A function to include navigation properties</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
+    /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
     Task<IList<TResult>> GetAllAsync<TResult>(
@@ -335,7 +360,8 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
         bool disableTracking = true,
-        bool ignoreQueryFilters = false);
+        bool ignoreQueryFilters = false,
+        bool ignoreAutoIncludes = false);
 
     #endregion
 

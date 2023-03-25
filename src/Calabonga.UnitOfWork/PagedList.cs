@@ -5,6 +5,31 @@ using System.Linq;
 namespace Calabonga.UnitOfWork;
 
 /// <summary>
+/// Provides some help methods for <see cref="IPagedList{T}"/> interface.
+/// </summary>
+public static class PagedList
+{
+    /// <summary>
+    /// Creates an empty of <see cref="IPagedList{T}"/>.
+    /// </summary>
+    /// <typeparam name="T">The type for paging </typeparam>
+    /// <returns>An empty instance of <see cref="IPagedList{T}"/>.</returns>
+    public static IPagedList<T> Empty<T>() => new PagedList<T>();
+
+    /// <summary>
+    /// Creates a new instance of <see cref="IPagedList{TResult}"/> from source of <see cref="IPagedList{TSource}"/> instance.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <typeparam name="TSource">The type of the source.</typeparam>
+    /// <param name="source">The source.</param>
+    /// <param name="converter">The converter.</param>
+    /// <returns>An instance of <see cref="IPagedList{TResult}"/>.</returns>
+    public static IPagedList<TResult> From<TResult, TSource>(IPagedList<TSource> source,
+        Func<IEnumerable<TSource>, IEnumerable<TResult>> converter) =>
+        new PagedList<TSource, TResult>(source, converter);
+}
+
+/// <summary>
 /// Provides the implementation of the <see cref="IPagedList{T}"/> and converter.
 /// </summary>
 /// <typeparam name="TSource">The type of the source.</typeparam>
@@ -67,8 +92,13 @@ internal class PagedList<TSource, TResult> : IPagedList<TResult>
     /// <param name="pageIndex">The index of the page.</param>
     /// <param name="pageSize">The size of the page.</param>
     /// <param name="indexFrom">The index from.</param>
-    public PagedList(IEnumerable<TSource> source, Func<IEnumerable<TSource>, IEnumerable<TResult>> converter,
-        int pageIndex, int pageSize, int indexFrom)
+    public PagedList
+    (
+        IEnumerable<TSource> source,
+        Func<IEnumerable<TSource>, IEnumerable<TResult>> converter,
+        int pageIndex,
+        int pageSize,
+        int indexFrom)
     {
         if (indexFrom > pageIndex)
         {

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Calabonga.UnitOfWork;
 
+/// <summary>
+/// Extensions for IPageList
+/// </summary>
 public static class IQueryablePageListExtensions
 {
     /// <summary>

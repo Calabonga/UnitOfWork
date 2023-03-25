@@ -12,7 +12,7 @@
           "hash": "3S1YtFwIpPTx+wFW/7WCC0UZxtGBzYEcp0Y9i3b4yxE="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -24,7 +24,7 @@
           "hash": "W0nXwYIWQa1XgICAx3RJUy1GP4iG0bJ9Es7IkBNiA3Y="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -36,7 +36,7 @@
           "hash": "mxBHk5M/kn/w4mq48VcdnGWsbP3+dF/TyVIfhQu2zxc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -45,10 +45,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calabonga.UnitOfWork.IQueryablePageListExtensions.html",
-          "hash": "fmUnuSX6DgsHmJsF1SI5LIoUBqaIlmbFNEpwBAPbSxU="
+          "hash": "jHbPygvwm0ECQuc7KRD2+rFWp7rtfFkrF2R9U/Zrcic="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -57,10 +57,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calabonga.UnitOfWork.IRepository-1.html",
-          "hash": "sE6Xmk1y/leB6wL6xXgzuEp2mKzanUp3E95RU+O9HTc="
+          "hash": "TsQ93OV1y6GHHVmjLiaIMefKTJq7vH7pAO6TildcC0w="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -72,7 +72,7 @@
           "hash": "jEtfARFbj87niT/ENUONcN3xZCgV4guoVQYj3fj+fVU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -84,7 +84,7 @@
           "hash": "kThIMwO370dPh0sVsgEEDSwGk63yX4sNa5SV8FdhmlY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -96,7 +96,7 @@
           "hash": "UT01pytVbPlsRw2hQCirauoDSRYZmZNnhJdgz/GSYIc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -108,7 +108,7 @@
           "hash": "Za+2ekgQEvcTaBWgHefFiarQGShFDxNJsySqN11g4Us="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -120,7 +120,7 @@
           "hash": "Cl3oqsjmN3rLpVs9gLq0FqtmBW75QcsDQ7ZaHg+k4MY="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -132,7 +132,7 @@
           "hash": "VyVr2FRk2dOGvp6GTyknAG936rE4O3GhBNK5Tu7ieK4="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -141,10 +141,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calabonga.UnitOfWork.Repository-1.html",
-          "hash": "2ffQhReJf8qTVcH2An96UjbATqtFp1NabciBo6raThI="
+          "hash": "bg6bH5Pdi8POPXj5jSYYhhIzTTGTu/8PUir+YMde7Q8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -153,10 +153,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calabonga.UnitOfWork.SaveChangesResult.html",
-          "hash": "THZZAAlb5nxTlDAoJEUVofnDPcXbcqWZ5OddDyESvLM="
+          "hash": "NY8RCjqOeNTBDmpCpBBJtsKcTGfeW9Ka89GlDU0quvs="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -168,7 +168,7 @@
           "hash": "wb2QvProjqGVOMeSE2GakDnS6usS4/4sTDdxVOryaAU="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -177,10 +177,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.html",
-          "hash": "mA2RILrIc9TEGtevEEhvlLF9s6O3pkskbfCNxi/XgoU="
+          "hash": "/vFL/4SqYWewbKLVZlyGJ/byXecuis1ABrrrBYFvv7s="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -189,10 +189,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Calabonga.UnitOfWork.html",
-          "hash": "2yCy9YdhmRAmklDkm3pJ5an5qu0wtE/nBqi9mS57tW8="
+          "hash": "nc+14BrXbTBBLAr+2XmuonqoIlXzpcFcSSt5LR+O1U8="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -204,7 +204,7 @@
           "hash": "HKdXOr//EtVVNBRs2kqjwFDQG1nVEE6n5shMA82RUNc="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -250,7 +250,7 @@
           "hash": "1DhpoRyMn4elEfAnEIFxqj9OcJZNbQ9LcPRdFtfqTSg="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -269,23 +269,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Disable incremental build by force rebuild option.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "ForceRebuild"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 2,
-          "skipped_file_count": 2
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 16,
-          "skipped_file_count": 16
+          "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
@@ -305,8 +307,8 @@
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

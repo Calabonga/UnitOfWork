@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Version>3.0.1</Version>
+        <Version>3.1.0</Version>
         <Authors>Calabonga</Authors>
         <Company>Calabonga SOFT</Company>
         <Description>Unit of Work implementation for EntityFramework Core. For more information please see Calabonga.UnitOfWork package. Perhaps, you might find more information on youtube.com/sergeicalabonga and www.calabonga.net</Description>
@@ -10,21 +10,21 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>logo.png</PackageIcon>
         <PackageTags>Calabonga EntityFrameworkCore UnitOfWork Repository Extenstion Helper unitofowrk ORM pagination PagedList pattern</PackageTags>
-        <PackageReleaseNotes>Nugets packages updated.</PackageReleaseNotes>
+        <PackageReleaseNotes>AutiooIncludes managbeement added to reposeitoryIR</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://www.calabonga.net</PackageProjectUrl>
-        <FileVersion>3.0.1.0</FileVersion>
-        <AssemblyVersion>3.0.1.0</AssemblyVersion>
+        <FileVersion>3.1.20.0</FileVersion>
+        <AssemblyVersion>3.1.0.0</AssemblyVersion>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.12" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.15" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.15" />
     </ItemGroup>
 
 	<ItemGroup>
-		<None Include="logo.png" Pack="true" PackagePath="\"/>
+		<None Include="logo.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
     
 </Project>

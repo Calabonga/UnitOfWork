@@ -183,7 +183,8 @@
   
   <a id="Calabonga_UnitOfWork_UnitOfWorkServiceCollectionExtensions_AddUnitOfWork_" data-uid="Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.AddUnitOfWork*"></a>
   <h4 id="Calabonga_UnitOfWork_UnitOfWorkServiceCollectionExtensions_AddUnitOfWork__1_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.AddUnitOfWork``1(Microsoft.Extensions.DependencyInjection.IServiceCollection)">AddUnitOfWork&lt;TContext&gt;(IServiceCollection)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Registers the unit of work given context as a service in the <span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -203,7 +204,8 @@
       <tr>
         <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
         <td><span class="parametername">services</span></td>
-        <td></td>
+        <td><p>The <span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span> to add services to.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -218,7 +220,8 @@
     <tbody>
       <tr>
         <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
-        <td></td>
+        <td><p>The same service collection so that multiple calls can be chained.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -233,10 +236,14 @@
     <tbody>
       <tr>
         <td><span class="parametername">TContext</span></td>
-        <td></td>
+        <td><p>The type of the db context.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Calabonga_UnitOfWork_UnitOfWorkServiceCollectionExtensions_AddUnitOfWork__1_Microsoft_Extensions_DependencyInjection_IServiceCollection__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This method only support one db context, if been called more than once, will throw exception.</p>
+</div>
   
   
   <a id="Calabonga_UnitOfWork_UnitOfWorkServiceCollectionExtensions_AddUnitOfWork_" data-uid="Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.AddUnitOfWork*"></a>
