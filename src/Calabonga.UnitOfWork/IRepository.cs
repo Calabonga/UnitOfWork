@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Calabonga.PagedListCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -19,7 +20,7 @@ public interface IRepository<TEntity> where TEntity : class
     #region GetPagedList
 
     /// <summary>
-    /// Gets the <see cref="IPagedList{TEntity}"/> based on a predicate, orderBy delegate and page information. This method default no-tracking query.
+    /// Gets the <see cref="IPagedList{T}"/> based on a predicate, orderBy delegate and page information. This method default no-tracking query.. This method default no-tracking query.
     /// </summary>
     /// <param name="predicate">A function to test each element for a condition.</param>
     /// <param name="orderBy">A function to order elements.</param>

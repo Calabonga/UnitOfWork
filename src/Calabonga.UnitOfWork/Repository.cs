@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Calabonga.PagedListCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Query;
@@ -109,7 +110,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
-    /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
+    /// <returns>An <see cref="IPagedList{T}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
     public IQueryable<TEntity> GetAll(
         Expression<Func<TEntity, bool>>? predicate = null,

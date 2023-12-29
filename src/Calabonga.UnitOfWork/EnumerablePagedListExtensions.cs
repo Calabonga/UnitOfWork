@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Calabonga.PagedListCore;
+using System;
 using System.Collections.Generic;
 
 namespace Calabonga.UnitOfWork;
@@ -17,8 +18,8 @@ public static class EnumerablePagedListExtensions
     /// <param name="pageSize">The size of the page.</param>
     /// <param name="indexFrom">The start index value.</param>
     /// <returns>An instance of the inherited from <see cref="IPagedList{T}"/> interface.</returns>
-    public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> source, int pageIndex, int pageSize,
-        int indexFrom = 0) => new PagedList<T>(source, pageIndex, pageSize, indexFrom);
+    public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> source, int pageIndex, int pageSize, int indexFrom = 0)
+        => PagedList.Create<T>(source, pageIndex, pageSize, indexFrom);
 
     /// <summary>
     /// Converts the specified source to <see cref="IPagedList{T}"/> by the specified <paramref name="converter"/>, <paramref name="pageIndex"/> and <paramref name="pageSize"/>
@@ -31,7 +32,11 @@ public static class EnumerablePagedListExtensions
     /// <param name="pageSize">The page size.</param>
     /// <param name="indexFrom">The start index value.</param>
     /// <returns>An instance of the inherited from <see cref="IPagedList{T}"/> interface.</returns>
-    public static IPagedList<TResult> ToPagedList<TSource, TResult>(this IEnumerable<TSource> source,
-        Func<IEnumerable<TSource>, IEnumerable<TResult>> converter, int pageIndex, int pageSize,
-        int indexFrom = 0) => new PagedList<TSource, TResult>(source, converter, pageIndex, pageSize, indexFrom);
+    public static IPagedList<TResult> ToPagedList<TSource, TResult>(
+        this IEnumerable<TResult> source,
+        Func<IEnumerable<TResult>, IEnumerable<TResult>> converter,
+        int pageIndex,
+        int pageSize,
+        int indexFrom = 0)
+        => PagedList.Create<TSource, TResult>(source, converter, pageIndex, pageSize, indexFrom);
 }

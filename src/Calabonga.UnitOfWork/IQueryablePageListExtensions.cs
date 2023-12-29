@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Calabonga.PagedListCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading;
@@ -36,16 +37,6 @@ public static class IQueryablePageListExtensions
         var items = await source.Skip((pageIndex - indexFrom) * pageSize)
             .Take(pageSize).ToListAsync(cancellationToken).ConfigureAwait(false);
 
-        var pagedList = new PagedList<T>()
-        {
-            PageIndex = pageIndex,
-            PageSize = pageSize,
-            IndexFrom = indexFrom,
-            TotalCount = count,
-            Items = items,
-            TotalPages = (int)Math.Ceiling(count / (double)pageSize)
-        };
-
-        return pagedList;
+        return new PagedList<T>(items, pageIndex, pageSize, indexFrom, count);
     }
 }
