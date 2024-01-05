@@ -4,6 +4,11 @@
 
 # Версии
 
+### 4.0.0-beta.2
+
+* `IPagedList<T>` вынесен в свой собственный nuget-пакет `Calabogna.PagedListCore`.
+* Обновлена документация https://calabonga.github.io/UnitOfWork/
+
 ### 3.1.0 от 2023-03-25
 * Обновлены nuget-пакеты EntityFramework
 * Добавлены дополнительные параметры в методы `IRepository<T>` для управления `AutoIncludes`.

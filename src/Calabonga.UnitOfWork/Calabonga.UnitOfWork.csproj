@@ -17,7 +17,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Calabonga.PagedListCore" Version="1.0.0" />
+        
+        <PackageReference Include="Calabonga.PagedListCore" Version="1.0.3" />
+        
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.15" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.15" />
     </ItemGroup>
