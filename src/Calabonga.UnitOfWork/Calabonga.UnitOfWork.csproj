@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <Version>4.0.0-beta.2</Version>
+        <Version>4.0.0-beta.3</Version>
         <Authors>Calabonga</Authors>
         <Company>Calabonga SOFT</Company>
 	    <Copyright>Calabonga SOFT © 2001-$([System.DateTime]::Now.ToString(yyyy))</Copyright>
@@ -10,16 +10,14 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>logo.png</PackageIcon>
         <PackageTags>Calabonga EntityFrameworkCore UnitOfWork Repository Extenstion Helper unitofowrk ORM pagination PagedList pattern</PackageTags>
-        <PackageReleaseNotes>IPagedList objects moved to its own nuget-package.</PackageReleaseNotes>
+        <PackageReleaseNotes>IPagedList nuget package updated (due bug)</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://www.calabonga.net</PackageProjectUrl>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-        
-        <PackageReference Include="Calabonga.PagedListCore" Version="1.0.3" />
-        
+        <PackageReference Include="Calabonga.PagedListCore" Version="1.0.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.15" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.15" />
     </ItemGroup>
