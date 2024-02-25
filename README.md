@@ -4,8 +4,9 @@
 
 # Версии
 
-### 4.0.0-beta.2
+### 4.0.0 от 2024-02-25
 
+* Обновлена версия сборки до .NET8.
 * `IPagedList<T>` вынесен в свой собственный nuget-пакет `Calabogna.PagedListCore`.
 * Обновлена документация https://calabonga.github.io/UnitOfWork/
 

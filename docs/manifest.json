@@ -1,5 +1,4 @@
 {
-  "homepages": [],
   "source_base_path": "C:/Projects/UnitOfWork/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
@@ -8,11 +7,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.EnumerablePagedListExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.EnumerablePagedListExtensions.html",
-          "hash": "3S1YtFwIpPTx+wFW/7WCC0UZxtGBzYEcp0Y9i3b4yxE="
+          "relative_path": "api/Calabonga.UnitOfWork.EnumerablePagedListExtensions.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -20,11 +17,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.ExceptionHelper.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.ExceptionHelper.html",
-          "hash": "W0nXwYIWQa1XgICAx3RJUy1GP4iG0bJ9Es7IkBNiA3Y="
+          "relative_path": "api/Calabonga.UnitOfWork.ExceptionHelper.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -32,11 +27,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.IPagedList-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.IPagedList-1.html",
-          "hash": "mxBHk5M/kn/w4mq48VcdnGWsbP3+dF/TyVIfhQu2zxc="
+          "relative_path": "api/Calabonga.UnitOfWork.IPagedList-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -44,11 +37,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.IQueryablePageListExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.IQueryablePageListExtensions.html",
-          "hash": "jHbPygvwm0ECQuc7KRD2+rFWp7rtfFkrF2R9U/Zrcic="
+          "relative_path": "api/Calabonga.UnitOfWork.IQueryablePageListExtensions.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -56,11 +47,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.IRepository-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.IRepository-1.html",
-          "hash": "TsQ93OV1y6GHHVmjLiaIMefKTJq7vH7pAO6TildcC0w="
+          "relative_path": "api/Calabonga.UnitOfWork.IRepository-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -68,11 +57,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.IRepositoryFactory.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.IRepositoryFactory.html",
-          "hash": "jEtfARFbj87niT/ENUONcN3xZCgV4guoVQYj3fj+fVU="
+          "relative_path": "api/Calabonga.UnitOfWork.IRepositoryFactory.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -80,11 +67,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork-1.html",
-          "hash": "kThIMwO370dPh0sVsgEEDSwGk63yX4sNa5SV8FdhmlY="
+          "relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -92,11 +77,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork.html",
-          "hash": "UT01pytVbPlsRw2hQCirauoDSRYZmZNnhJdgz/GSYIc="
+          "relative_path": "api/Calabonga.UnitOfWork.IUnitOfWork.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -104,11 +87,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.PagedList-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.PagedList-1.html",
-          "hash": "Za+2ekgQEvcTaBWgHefFiarQGShFDxNJsySqN11g4Us="
+          "relative_path": "api/Calabonga.UnitOfWork.PagedList-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -116,11 +97,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.PagedList-2.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.PagedList-2.html",
-          "hash": "Cl3oqsjmN3rLpVs9gLq0FqtmBW75QcsDQ7ZaHg+k4MY="
+          "relative_path": "api/Calabonga.UnitOfWork.PagedList-2.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -128,11 +107,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.PagedList.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.PagedList.html",
-          "hash": "VyVr2FRk2dOGvp6GTyknAG936rE4O3GhBNK5Tu7ieK4="
+          "relative_path": "api/Calabonga.UnitOfWork.PagedList.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -140,11 +117,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.Repository-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.Repository-1.html",
-          "hash": "bg6bH5Pdi8POPXj5jSYYhhIzTTGTu/8PUir+YMde7Q8="
+          "relative_path": "api/Calabonga.UnitOfWork.Repository-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -152,11 +127,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.SaveChangesResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.SaveChangesResult.html",
-          "hash": "NY8RCjqOeNTBDmpCpBBJtsKcTGfeW9Ka89GlDU0quvs="
+          "relative_path": "api/Calabonga.UnitOfWork.SaveChangesResult.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -164,11 +137,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.UnitOfWork-1.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.UnitOfWork-1.html",
-          "hash": "wb2QvProjqGVOMeSE2GakDnS6usS4/4sTDdxVOryaAU="
+          "relative_path": "api/Calabonga.UnitOfWork.UnitOfWork-1.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -176,11 +147,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.html",
-          "hash": "/vFL/4SqYWewbKLVZlyGJ/byXecuis1ABrrrBYFvv7s="
+          "relative_path": "api/Calabonga.UnitOfWork.UnitOfWorkServiceCollectionExtensions.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -188,11 +157,9 @@
       "source_relative_path": "api/Calabonga.UnitOfWork.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Calabonga.UnitOfWork.html",
-          "hash": "nc+14BrXbTBBLAr+2XmuonqoIlXzpcFcSSt5LR+O1U8="
+          "relative_path": "api/Calabonga.UnitOfWork.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -200,11 +167,9 @@
       "source_relative_path": "api/index.md",
       "output": {
         ".html": {
-          "relative_path": "api/index.html",
-          "hash": "HKdXOr//EtVVNBRs2kqjwFDQG1nVEE6n5shMA82RUNc="
+          "relative_path": "api/index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -212,11 +177,12 @@
       "source_relative_path": "api/toc.yml",
       "output": {
         ".html": {
-          "relative_path": "api/toc.html",
-          "hash": "Vx260mtunSNtV/0dECaLn8SeWH8QjuRwirqjdlnC6u0="
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -227,7 +193,6 @@
           "relative_path": "images/favicon.ico"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -238,7 +203,6 @@
           "relative_path": "images/logo.png"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -246,11 +210,9 @@
       "source_relative_path": "index.md",
       "output": {
         ".html": {
-          "relative_path": "index.html",
-          "hash": "mnFZrMdanPfElRHCRQNhLs6Sux/Sg+kI0D2+woqpPyQ="
+          "relative_path": "index.html"
         }
       },
-      "is_incremental": false,
       "version": ""
     },
     {
@@ -258,65 +220,15 @@
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
-          "relative_path": "toc.html",
-          "hash": "PU0Iutkz7eenvqTyOQh718cxGWRktOZhIqIm7223QxM="
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
         }
       },
-      "is_incremental": false,
       "version": ""
     }
   ],
-  "incremental_info": [
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Disable incremental build by force rebuild option.",
-        "incrementalPhase": "build",
-        "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "ForceRebuild"
-      },
-      "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 2,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 16,
-          "skipped_file_count": 0
-        },
-        "ResourceDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        },
-        "TocDocumentProcessor": {
-          "can_incremental": false,
-          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
-          "incrementalPhase": "build",
-          "total_file_count": 0,
-          "skipped_file_count": 0
-        }
-      }
-    },
-    {
-      "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: it's disabled.",
-        "incrementalPhase": "postProcessing",
-        "total_file_count": 0,
-        "skipped_file_count": 0
-      },
-      "processors": {}
-    }
-  ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"

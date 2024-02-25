@@ -198,7 +198,7 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
     public void Dispose()
     {
         Dispose(true);
-        // ReSharper disable once GCSuppressFinalizeForTypeWithoutDestructor
+        //ReSharper disable once GCSuppressFinalizeForTypeWithoutDestructor
         GC.SuppressFinalize(this);
     }
 

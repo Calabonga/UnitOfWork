@@ -110,7 +110,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
-    /// <returns>An <see cref="IPagedList{T}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
+    /// <returns>A <see cref="IPagedList{T}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
     public IQueryable<TEntity> GetAll(
         Expression<Func<TEntity, bool>>? predicate = null,
@@ -981,6 +981,8 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
             ? _dbSet.SumAsync(selector, cancellationToken)
             : _dbSet.Where(predicate).SumAsync(selector, cancellationToken);
 
+    #region Insert
+
     /// <summary>
     /// Inserts a new entity synchronously.
     /// </summary>
@@ -1023,6 +1025,10 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <returns>A <see cref="Task"/> that represents the asynchronous insert operation.</returns>
     public Task InsertAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default) => _dbSet.AddRangeAsync(entities, cancellationToken);
 
+    #endregion
+
+    #region Update
+
     /// <summary>
     /// Updates the specified entity.
     /// </summary>
@@ -1040,6 +1046,66 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// </summary>
     /// <param name="entities">The entities.</param>
     public void Update(IEnumerable<TEntity> entities) => _dbSet.UpdateRange(entities);
+
+    /// <summary>
+    ///     Updates all database rows for the entity instances which match the LINQ query from the database.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         This operation executes immediately against the database, rather than being deferred until
+    ///         <see cref="M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges" /> is called. It also does not interact with the EF change tracker in any way:
+    ///         entity instances which happen to be tracked when this operation is invoked aren't taken into account, and aren't updated
+    ///         to reflect the changes.
+    ///     </para>
+    ///     <para>
+    ///         See <see href="https://aka.ms/efcore-docs-bulk-operations">Executing bulk operations with EF Core</see>
+    ///         for more information and examples.
+    ///     </para>
+    /// </remarks>
+    /// <param name="predicate">Predicate</param>
+    /// <returns>The total number of rows updated in the database.</returns>
+    public int ExecuteUpdate(Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> predicate)
+        => _dbSet.ExecuteUpdate(predicate);
+
+    /// <summary>
+    ///     Asynchronously updates database rows for the entity instances which match the LINQ query from the database.
+    /// </summary>
+    /// <remarks>
+    ///     <para>
+    ///         This operation executes immediately against the database, rather than being deferred until
+    ///         <see cref="M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges" /> is called. It also does not interact with the EF change tracker in any way:
+    ///         entity instances which happen to be tracked when this operation is invoked aren't taken into account, and aren't updated
+    ///         to reflect the changes.
+    ///     </para>
+    ///     <para>
+    ///         See <see href="https://aka.ms/efcore-docs-bulk-operations">Executing bulk operations with EF Core</see>
+    ///         for more information and examples.
+    ///     </para>
+    /// </remarks>
+    /// <param name="predicate">Predicate</param>
+    /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
+    /// <returns>The total number of rows updated in the database.</returns>
+    public Task<int> ExecuteUpdateAsync(
+        Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> predicate,
+        CancellationToken cancellationToken)
+        => _dbSet.ExecuteUpdateAsync(predicate, cancellationToken);
+
+    #endregion
+
+    #region Delete
+
+
+    /// <summary>
+    /// Deletes the specified entities.
+    /// </summary>
+    /// <param name="entities">The entities.</param>
+    public void Delete(IEnumerable<TEntity> entities) => _dbSet.RemoveRange(entities);
+
+    /// <summary>
+    /// Deletes the specified entities.
+    /// </summary>
+    /// <param name="entities">The entities.</param>
+    public void Delete(params TEntity[] entities) => _dbSet.RemoveRange(entities);
 
     /// <summary>
     /// Deletes the specified entity.
@@ -1079,14 +1145,41 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     }
 
     /// <summary>
-    /// Deletes the specified entities.
+    ///     Deletes all database rows for the entity instances which match the LINQ query from the database.
     /// </summary>
-    /// <param name="entities">The entities.</param>
-    public void Delete(params TEntity[] entities) => _dbSet.RemoveRange(entities);
+    /// <remarks>
+    ///     <para>
+    ///         This operation executes immediately against the database, rather than being deferred until
+    ///         <see cref="M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges" /> is called. It also does not interact with the EF change tracker in any way:
+    ///         entity instances which happen to be tracked when this operation is invoked aren't taken into account, and aren't updated
+    ///         to reflect the changes.
+    ///     </para>
+    ///     <para>
+    ///         See <see href="https://aka.ms/efcore-docs-bulk-operations">Executing bulk operations with EF Core</see>
+    ///         for more information and examples.
+    ///     </para>
+    /// </remarks>
+    /// <returns>The total number of rows deleted in the database.</returns>
+    public int ExecuteDelete() => _dbSet.ExecuteDelete();
 
     /// <summary>
-    /// Deletes the specified entities.
+    ///     Asynchronously deletes database rows for the entity instances which match the LINQ query from the database.
     /// </summary>
-    /// <param name="entities">The entities.</param>
-    public void Delete(IEnumerable<TEntity> entities) => _dbSet.RemoveRange(entities);
+    /// <remarks>
+    ///     <para>
+    ///         This operation executes immediately against the database, rather than being deferred until
+    ///         <see cref="M:Microsoft.EntityFrameworkCore.DbContext.SaveChanges" /> is called. It also does not interact with the EF change tracker in any way:
+    ///         entity instances which happen to be tracked when this operation is invoked aren't taken into account, and aren't updated
+    ///         to reflect the changes.
+    ///     </para>
+    ///     <para>
+    ///         See <see href="https://aka.ms/efcore-docs-bulk-operations">Executing bulk operations with EF Core</see>
+    ///         for more information and examples.
+    ///     </para>
+    /// </remarks>
+    /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
+    /// <returns>The total number of rows deleted in the database.</returns>
+    public Task<int> ExecuteDeleteAsync(CancellationToken cancellationToken = default) => _dbSet.ExecuteDeleteAsync(cancellationToken);
+
+    #endregion
 }

@@ -4,18 +4,27 @@
 
 # Версии
 
+### 4.0.0 от 2024-02-25
+
+* Обновлена версия сборки до .NET8.
+* `IPagedList<T>` вынесен в свой собственный nuget-пакет `Calabogna.PagedListCore`.
+* Обновлена документация https://calabonga.github.io/UnitOfWork/
+
 ### 3.1.0 от 2023-03-25
 * Обновлены nuget-пакеты EntityFramework
 * Добавлены дополнительные параметры в методы `IRepository<T>` для управления `AutoIncludes`.
 * Обновлена документация https://calabonga.github.io/UnitOfWork/
 
-### 3.0.1 от 2022-02-08
+### 2022-02-08
 * Сборка переведена на NET6.0. В проект был обновлен (Nullable = true)
 * Обновлены методы на предмет обработки Nullable типов
 * Удалена сборка AutoHistory по причине отсутствия поддержки ее NET6.0.
 
 # Ссылки 
-[EntityFramework Core и паттерны "Unit of Work" и "Repository" (ru)](https://www.calabonga.net/blog/post/entityframework-unitofwork-and-repository) 
+
+* [EntityFramework Core и паттерны "Unit of Work" и "Repository" (ru)](https://www.calabonga.net/blog/post/entityframework-unitofwork-and-repository) 
+* [Документация API](https://calabonga.github.io/UnitOfWork/api/index.html)
+
 
 ## Комментарии, пожелания, замечания
 
