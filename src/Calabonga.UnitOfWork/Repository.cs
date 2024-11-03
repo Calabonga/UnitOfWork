@@ -17,7 +17,7 @@ namespace Calabonga.UnitOfWork;
 /// Represents a default generic repository implements the <see cref="IRepository{TEntity}"/> interface.
 /// </summary>
 /// <typeparam name="TEntity">The type of the entity.</typeparam>
-public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+public sealed partial class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     private readonly DbContext _dbContext;
     private readonly DbSet<TEntity> _dbSet;
@@ -58,6 +58,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// Gets all entities. This method is not recommended
     /// </summary>
     /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public IQueryable<TEntity> GetAll(bool disableTracking = true) =>
         disableTracking
             ? _dbSet.AsNoTracking()
@@ -69,6 +70,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="selector">The selector for projection.</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public IQueryable<TResult> GetAll<TResult>(
         Expression<Func<TEntity, TResult>> selector,
         bool disableTracking = true) =>
@@ -76,17 +78,20 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
             ? _dbSet.AsNoTracking().Select(selector)
             : _dbSet.Select(selector);
 
+    /// <summary>
+    /// Gets all entities. This method is not recommended
+    /// </summary>
+    /// <param name="selector">The selector for projection.</param>
+    /// <param name="predicate">A function to test each element for a condition.</param>
+    /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
+    /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public IQueryable<TResult> GetAll<TResult>(
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? predicate = null,
         bool disableTracking = true)
     {
         IQueryable<TEntity> query = _dbSet;
-
-        if (disableTracking)
-        {
-            query = query.AsNoTracking();
-        }
 
         if (disableTracking)
         {
@@ -112,6 +117,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>A <see cref="IPagedList{T}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public IQueryable<TEntity> GetAll(
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
@@ -164,6 +170,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public IQueryable<TResult> GetAll<TResult>(
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? predicate = null,
@@ -209,6 +216,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// Gets all entities. This method is not recommended
     /// </summary>
     /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public async Task<IList<TEntity>> GetAllAsync(bool disableTracking = true)
         => disableTracking
             ? await _dbSet.AsNoTracking().ToListAsync()
@@ -220,6 +228,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="selector">The selector for projection.</param>
     /// <param name="disableTracking"><c>true</c> to disable changing tracking; otherwise, <c>false</c>. Default to <c>true</c>.</param>
     /// <returns>The <see cref="IQueryable{TEntity}"/>.</returns>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public async Task<IList<TResult>> GetAllAsync<TResult>(Expression<Func<TEntity, TResult>> selector, bool disableTracking = true) =>
         disableTracking
             ? await _dbSet.AsNoTracking().Select(selector).ToListAsync()
@@ -236,6 +245,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public async Task<IList<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
@@ -290,6 +300,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreQueryFilters">Ignore query filters</param>
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns></returns>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public async Task<IList<TResult>> GetAllAsync<TResult>(
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? predicate = null,
@@ -344,6 +355,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public IPagedList<TEntity> GetPagedList(
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
@@ -402,6 +414,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public Task<IPagedList<TEntity>> GetPagedListAsync(
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
@@ -459,6 +472,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TResult}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public IPagedList<TResult> GetPagedList<TResult>(
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? predicate = null,
@@ -520,6 +534,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public Task<IPagedList<TResult>> GetPagedListAsync<TResult>(Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
@@ -575,6 +590,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method default no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public TEntity? GetFirstOrDefault(Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
@@ -625,6 +641,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query. </remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public async Task<TEntity?> GetFirstOrDefaultAsync(Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
         Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
@@ -676,6 +693,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>This method defaults to a read-only, no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public TResult? GetFirstOrDefault<TResult>(
         Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? predicate = null,
@@ -729,6 +747,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="ignoreAutoIncludes">Ignore automatic includes</param>
     /// <returns>An <see cref="IPagedList{TEntity}"/> that contains elements that satisfy the condition specified by <paramref name="predicate"/>.</returns>
     /// <remarks>Ex: This method defaults to a read-only, no-tracking query.</remarks>
+    [Obsolete("This method is will be removed in the future. Please use another overload for this method with TrackingType parameter instead.")]
     public async Task<TResult?> GetFirstOrDefaultAsync<TResult>(Expression<Func<TEntity, TResult>> selector,
         Expression<Func<TEntity, bool>>? predicate = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
