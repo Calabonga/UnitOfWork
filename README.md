@@ -1,10 +1,15 @@
-
 # UnitOfWork
-Реализация паттерна "Unit Of Work" для EntityFrameworkCore на платформе .NET
+
+Реализация паттерна "Unit Of Work" для EntityFrameworkCore на платформе .NET. This is a Unit ofWork pattern implementation on .NET.
 
 # Версии
 
-### 5.0.0-beta.1 2024-11-03
+## 5.0.0-beta.2 2024-11-23
+
+* Добавлена поддержка фреймворка NET9.0 наряду с фреймворком NET8.0 (Added support for NET9.0 framework along with NET8.0 framework). Теперь в одном пакете поддержка двух версий.
+
+
+## 5.0.0-beta.1 2024-11-03
 
 * Созданые перегрузки для всех методов, где используется параметр `disableTracking` с целью дополнить новым способом управления слежением за изменениями. Теперь доступно выбрать один из вариантов:
   ``` csharp
@@ -56,18 +61,18 @@
 * Исправлены дубликаты кода, возникшие при склеивании веток (спасибо Andrey).
 
 
-### 4.0.0 от 2024-02-25
+## 4.0.0 от 2024-02-25
 
 * Обновлена версия сборки до .NET8.
 * `IPagedList<T>` вынесен в свой собственный nuget-пакет `Calabogna.PagedListCore`.
 * Обновлена документация https://calabonga.github.io/UnitOfWork/
 
-### 3.1.0 от 2023-03-25
+## 3.1.0 от 2023-03-25
 * Обновлены nuget-пакеты EntityFramework
 * Добавлены дополнительные параметры в методы `IRepository<T>` для управления `AutoIncludes`.
 * Обновлена документация https://calabonga.github.io/UnitOfWork/
 
-### 2022-02-08
+## 2022-02-08
 * Сборка переведена на NET6.0. В проект был обновлен (Nullable = true)
 * Обновлены методы на предмет обработки Nullable типов
 * Удалена сборка AutoHistory по причине отсутствия поддержки ее NET6.0.
@@ -76,16 +81,10 @@
 
 * [EntityFramework Core и паттерны "Unit of Work" и "Repository" (ru)](https://www.calabonga.net/blog/post/entityframework-unitofwork-and-repository) 
 * [Документация API](https://calabonga.github.io/UnitOfWork/api/index.html)
-
-
-## Комментарии, пожелания, замечания
-
-Пишите комментарии к видео на сайте [www.calabonga.net](https://www.calabonga.net)
+* [Блог по программированию](https://www.calabonga.net)
+* [Boosty.To](https://boosty.to/calabonga)
+* Пишите комментарии к видео на сайте [www.calabonga.net](https://www.calabonga.net)
 
 # Автор
 
-Сергей Калабонга (Calabonga)
-
 ![Author](https://www.calabonga.net/images/Calabonga.gif)
-
-[Блог по программированию](https://www.calabonga.net)
