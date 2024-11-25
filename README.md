@@ -4,6 +4,11 @@
 
 # Версии
 
+# 5.0.0 2024-11-25
+
+* Released new `5.0.0` version
+* Deprecated method will remove soon. Please use new overrides with `TrackingType` parameter.
+
 ## 5.0.0-beta.2 2024-11-23
 
 * Добавлена поддержка фреймворка NET9.0 наряду с фреймворком NET8.0 (Added support for NET9.0 framework along with NET8.0 framework). Теперь в одном пакете поддержка двух версий.
