@@ -30,7 +30,7 @@ public sealed class SaveChangesResult
     /// Adds new message to result
     /// </summary>
     /// <param name="message"></param>
-    private void AddMessage(string message) => Messages.Add(message);
+    public void AddMessage(string message) => Messages.Add(message);
 
     /// <summary>
     /// List of the error should appear there
