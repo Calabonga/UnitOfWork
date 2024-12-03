@@ -24,13 +24,13 @@ public sealed class SaveChangesResult
     /// <summary>
     /// Is Exception occupied while last operation execution
     /// </summary>
-    public bool IsOk => Exception == null;
+    public bool Ok => Exception == null;
 
     /// <summary>
     /// Adds new message to result
     /// </summary>
     /// <param name="message"></param>
-    public void AddMessage(string message) => Messages.Add(message);
+    private void AddMessage(string message) => Messages.Add(message);
 
     /// <summary>
     /// List of the error should appear there

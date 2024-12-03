@@ -31,7 +31,7 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
     public UnitOfWork(TContext context)
     {
         DbContext = context ?? throw new ArgumentNullException(nameof(context));
-        LastSaveChangesResult = new SaveChangesResult();
+        Result = new SaveChangesResult();
     }
 
     #region properties
@@ -47,9 +47,9 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
     #region Methods
 
     /// <summary>
-    /// Returns Transaction 
+    /// Begins transaction
     /// </summary>
-    /// <returns></returns>
+    /// <param name="useIfExists"></param>
     public Task<IDbContextTransaction> BeginTransactionAsync(bool useIfExists = false)
     {
         var transaction = DbContext.Database.CurrentTransaction;
@@ -62,9 +62,9 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
     }
 
     /// <summary>
-    /// Returns Transaction 
+    /// Begins transaction
     /// </summary>
-    /// <returns></returns>
+    /// <param name="useIfExists"></param>
     public IDbContextTransaction BeginTransaction(bool useIfExists = false)
     {
         var transaction = DbContext.Database.CurrentTransaction;
@@ -82,7 +82,7 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
     /// <param name="value"></param>
     public void SetAutoDetectChanges(bool value) => DbContext.ChangeTracker.AutoDetectChangesEnabled = value;
 
-    public SaveChangesResult LastSaveChangesResult { get; }
+    public SaveChangesResult Result { get; }
 
 
     #endregion
@@ -153,7 +153,7 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
         }
         catch (Exception exception)
         {
-            LastSaveChangesResult.Exception = exception;
+            Result.Exception = exception;
             return 0;
         }
     }
@@ -170,7 +170,7 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
         }
         catch (Exception exception)
         {
-            LastSaveChangesResult.Exception = exception;
+            Result.Exception = exception;
             return 0;
         }
     }

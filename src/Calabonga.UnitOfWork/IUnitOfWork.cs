@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Calabonga.UnitOfWork;
 
@@ -11,7 +11,7 @@ namespace Calabonga.UnitOfWork;
 /// Defines the interface(s) for generic unit of work.
 /// </summary>
 public interface IUnitOfWork<out TContext> : IUnitOfWork
-    where TContext : DbContext 
+    where TContext : DbContext
 {
     /// <summary>
     /// Gets the db context.
@@ -106,5 +106,5 @@ public interface IUnitOfWork : IDisposable
     /// <summary>
     /// Last error after SaveChanges operation executed
     /// </summary>
-    SaveChangesResult LastSaveChangesResult { get; }
+    SaveChangesResult Result { get; }
 }
