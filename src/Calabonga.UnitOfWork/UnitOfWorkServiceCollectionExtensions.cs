@@ -21,7 +21,7 @@ public static class UnitOfWorkServiceCollectionExtensions
         where TContext : DbContext
     {
         services.AddScoped<IRepositoryFactory, UnitOfWork<TContext>>();
-        // Following has a issue: IUnitOfWork cannot support multiple dbContext/database, 
+        // Following has an issue: IUnitOfWork cannot support multiple dbContext/database, 
         // that means cannot call AddUnitOfWork<TContext> multiple times.
         // Solution: check IUnitOfWork whether or null
         services.AddScoped<IUnitOfWork, UnitOfWork<TContext>>();
