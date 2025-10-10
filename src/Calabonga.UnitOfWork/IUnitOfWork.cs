@@ -79,6 +79,22 @@ public interface IUnitOfWork : IDisposable
     IQueryable<TEntity> FromSqlRaw<TEntity>(string sql, params object[] parameters) where TEntity : class;
 
     /// <summary>
+    /// Uses interpolated raw SQL queries to fetch the specified <typeparamref name="TEntity"/> data.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <param name="sql"></param>
+    /// <returns></returns>
+    IQueryable<TEntity> FromSqlRawInterpolated<TEntity>(FormattableString sql) where TEntity : class;
+
+    /// <summary>
+    /// Uses SQL queries to fetch the specified <typeparamref name="TEntity"/> data.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <param name="sql"></param>
+    /// <returns></returns>
+    IQueryable<TEntity> FromSql<TEntity>(FormattableString sql) where TEntity : class;
+
+    /// <summary>
     /// Uses Track Graph Api to attach disconnected entities
     /// </summary>
     /// <param name="rootEntity"> Root entity</param>
