@@ -142,6 +142,22 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
     public IQueryable<TEntity> FromSqlRaw<TEntity>(string sql, params object[] parameters) where TEntity : class => DbContext.Set<TEntity>().FromSqlRaw(sql, parameters);
 
     /// <summary>
+    /// Uses interpolated raw SQL queries to fetch the specified <typeparamref name="TEntity"/> data.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <param name="sql"></param>
+    /// <returns></returns>
+    public IQueryable<TEntity> FromSqlRawInterpolated<TEntity>(FormattableString sql) where TEntity : class => DbContext.Set<TEntity>().FromSqlInterpolated(sql);
+
+    /// <summary>
+    /// Uses SQL queries to fetch the specified <typeparamref name="TEntity"/> data.
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <param name="sql"></param>
+    /// <returns></returns>
+    public IQueryable<TEntity> FromSql<TEntity>(FormattableString sql) where TEntity : class => DbContext.Set<TEntity>().FromSql(sql);
+
+    /// <summary>
     /// Saves all changes made in this context to the database.
     /// </summary>
     /// <returns>The number of state entries written to the database.</returns>

@@ -8,6 +8,11 @@
 
 ## Версии
 
+### 6.1.0 2025-10-13
+
+* `FromSqlRawInterpolated` implemented in `IUnitOfWork` from `DbContext`.
+* * New release `6.1.0` published on the nuget.org.
+
 ### 6.0.0 2025-03-05
 
 * Deprecated methods were removed. Please use `TrackingType` parameter instead of `disableTracking`.
@@ -53,7 +58,7 @@
         return [];
     }
    ```
-  Достаточно явно добавить тип  ``
+  Достаточно явно добавить тип  
     ``` csharp
     public async Task<IEnumerable<PictureFile>> GetFilesForPostAsync(Guid postId, CancellationToken cancellationToken)
     {
