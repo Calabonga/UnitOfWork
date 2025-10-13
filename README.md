@@ -1,6 +1,10 @@
 ﻿# UnitOfWork
 
-Реализация паттерна "Unit Of Work" для EntityFrameworkCore на платформе .NET. This is a Unit ofWork pattern implementation on .NET.
+Реализация паттерна "Unit Of Work" для EntityFrameworkCore на платформе .NET. This is a Unit ofWork pattern implementation on .NET. 
+
+## Nuget
+
+[Calabonga.UnitOfWork](https://www.nuget.org/packages/Calabonga.UnitOfWork/)
 
 ## Версии
 
