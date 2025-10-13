@@ -4,6 +4,10 @@
 
 ## Версии
 
+### 6.1.0 2025-10-13
+
+* FromSqlRawInterpolated implemented in IUnitOfWork from DbContext.
+
 ### 6.0.0 2025-03-05
 
 * Deprecated methods were removed. Please use `TrackingType` parameter instead of `disableTracking`.
