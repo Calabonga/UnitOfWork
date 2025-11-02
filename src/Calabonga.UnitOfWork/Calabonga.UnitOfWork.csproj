@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <Version>6.1.0</Version>
+        <Version>6.2.0-beta.1</Version>
         <Authors>Calabonga</Authors>
         <Company>Calabonga SOFT</Company>
         <Copyright>Calabonga SOFT © 2001-$([System.DateTime]::Now.ToString(yyyy))</Copyright>
