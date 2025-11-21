@@ -8,15 +8,17 @@
 
 ## Версии
 
+### 6.2.0 2025-11-21
+
+* `ServiceLifetime` for `IUnitOfWork` added as a parameter during DI-container registration.
+
 ### 6.1.0 2025-10-13
 
 * `FromSqlRawInterpolated` implemented in `IUnitOfWork` from `DbContext`.
-* * New release `6.1.0` published on the nuget.org.
 
 ### 6.0.0 2025-03-05
 
 * Deprecated methods were removed. Please use `TrackingType` parameter instead of `disableTracking`.
-* New release `6.0.0` published.
 
 ### 5.0.0 2024-11-25
 
