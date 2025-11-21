@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Calabonga.UnitOfWork;
 
@@ -13,13 +14,44 @@ public static class UnitOfWorkServiceCollectionExtensions
     /// </summary>
     /// <typeparam name="TContext">The type of the db context.</typeparam>
     /// <param name="services">The <see cref="IServiceCollection"/> to add services to.</param>
+    /// <param name="lifetime"></param>
     /// <returns>The same service collection so that multiple calls can be chained.</returns>
     /// <remarks>
     /// This method only support one db context, if been called more than once, will throw exception.
     /// </remarks>
-    public static IServiceCollection AddUnitOfWork<TContext>(this IServiceCollection services)
+    public static IServiceCollection AddUnitOfWork<TContext>(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Scoped)
         where TContext : DbContext
     {
+        switch (lifetime)
+        {
+            case ServiceLifetime.Singleton:
+                services.AddSingleton<IRepositoryFactory, UnitOfWork<TContext>>();
+                // Following has an issue: IUnitOfWork cannot support multiple dbContext/database, 
+                // that means cannot call AddUnitOfWork<TContext> multiple times.
+                // Solution: check IUnitOfWork whether or null
+                services.AddSingleton<IUnitOfWork, UnitOfWork<TContext>>();
+                services.AddSingleton<IUnitOfWork<TContext>, UnitOfWork<TContext>>();
+                break;
+            case ServiceLifetime.Scoped:
+                services.AddScoped<IRepositoryFactory, UnitOfWork<TContext>>();
+                // Following has an issue: IUnitOfWork cannot support multiple dbContext/database, 
+                // that means cannot call AddUnitOfWork<TContext> multiple times.
+                // Solution: check IUnitOfWork whether or null
+                services.AddScoped<IUnitOfWork, UnitOfWork<TContext>>();
+                services.AddScoped<IUnitOfWork<TContext>, UnitOfWork<TContext>>();
+                break;
+            case ServiceLifetime.Transient:
+                services.AddTransient<IRepositoryFactory, UnitOfWork<TContext>>();
+                // Following has an issue: IUnitOfWork cannot support multiple dbContext/database, 
+                // that means cannot call AddUnitOfWork<TContext> multiple times.
+                // Solution: check IUnitOfWork whether or null
+                services.AddTransient<IUnitOfWork, UnitOfWork<TContext>>();
+                services.AddTransient<IUnitOfWork<TContext>, UnitOfWork<TContext>>();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(lifetime), lifetime, null);
+        }
+
         services.AddScoped<IRepositoryFactory, UnitOfWork<TContext>>();
         // Following has an issue: IUnitOfWork cannot support multiple dbContext/database, 
         // that means cannot call AddUnitOfWork<TContext> multiple times.
