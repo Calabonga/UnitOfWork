@@ -1,4 +1,4 @@
-name: NuGet Package Calabonga.UnitOfWork (net9)
+name: Publish NuGet Package (net10)
 
 on:
   push:
@@ -18,7 +18,7 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: 9.0.x
+          dotnet-version: 10.0.x
 
       - name: Install dependencies
         run: dotnet restore src/Calabonga.UnitOfWork.sln
