@@ -125,7 +125,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// </remarks>
     /// <param name="predicate">Predicate</param>
     /// <returns>The total number of rows updated in the database.</returns>
-    int ExecuteUpdate(Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> predicate);
+    int ExecuteUpdate(Action<UpdateSettersBuilder<TEntity>> predicate);
 
     /// <summary>
     ///     Asynchronously updates database rows for the entity instances which match the LINQ query from the database.
@@ -145,9 +145,7 @@ public interface IRepository<TEntity> where TEntity : class
     /// <param name="predicate">Predicate</param>
     /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
     /// <returns>The total number of rows updated in the database.</returns>
-    public Task<int> ExecuteUpdateAsync(
-        Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> predicate,
-        CancellationToken cancellationToken);
+    public Task<int> ExecuteUpdateAsync(Action<UpdateSettersBuilder<TEntity>> predicate, CancellationToken cancellationToken);
 
     #endregion
 

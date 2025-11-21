@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <Version>6.2.0-beta.1</Version>
+        <TargetFramework>net10.0</TargetFramework>
+        <Version>10.0.0-beta.1</Version>
         <Authors>Calabonga</Authors>
         <Company>Calabonga SOFT</Company>
         <Copyright>Calabonga SOFT © 2001-$([System.DateTime]::Now.ToString(yyyy))</Copyright>
@@ -10,7 +10,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>logo.png</PackageIcon>
         <PackageTags>Calabonga EntityFrameworkCore UnitOfWork Repository Extension Helper unitofowrk ORM pagination pattern changes Tracking entites</PackageTags>
-        <PackageReleaseNotes>FromSqlRawInterpolated implemented in IUnitOfWork from DbContext.</PackageReleaseNotes>
+        <PackageReleaseNotes>NET10.0 migration</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://www.calabonga.net</PackageProjectUrl>
         <Nullable>enable</Nullable>
@@ -25,12 +25,8 @@
 
     <ItemGroup>
         <PackageReference Include="Calabonga.PagedListCore" Version="1.0.4" />
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.11" Condition="'$(TargetFramework)' == 'net8.0'" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.11" Condition="'$(TargetFramework)' == 'net8.0'" />
-
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" Condition="'$(TargetFramework)' == 'net9.0'" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" Condition="'$(TargetFramework)' == 'net9.0'" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.0" />
     </ItemGroup>
 
     <ItemGroup>
