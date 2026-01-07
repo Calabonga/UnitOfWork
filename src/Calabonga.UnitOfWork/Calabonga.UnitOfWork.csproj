@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <Version>10.0.0-beta.1</Version>
+        <Version>10.0.0</Version>
         <Authors>Calabonga</Authors>
         <Company>Calabonga SOFT</Company>
         <Copyright>Calabonga SOFT © 2001-$([System.DateTime]::Now.ToString(yyyy))</Copyright>
@@ -25,8 +25,8 @@
 
     <ItemGroup>
         <PackageReference Include="Calabonga.PagedListCore" Version="1.0.4" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.1" />
     </ItemGroup>
 
     <ItemGroup>
