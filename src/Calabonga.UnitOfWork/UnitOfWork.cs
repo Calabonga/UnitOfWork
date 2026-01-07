@@ -100,11 +100,7 @@ public sealed class UnitOfWork<TContext> : IRepositoryFactory, IUnitOfWork<TCont
         // what's the best way to support custom repository?
         if (hasCustomRepository)
         {
-            var customRepo = DbContext.GetService<IRepository<TEntity>>();
-            if (customRepo != null)
-            {
-                return customRepo;
-            }
+            return DbContext.GetService<IRepository<TEntity>>();
         }
 
         var type = typeof(TEntity);

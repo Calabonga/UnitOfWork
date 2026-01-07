@@ -349,7 +349,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// </remarks>
     /// <param name="predicate">Predicate</param>
     /// <returns>The total number of rows updated in the database.</returns>
-    public int ExecuteUpdate(Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> predicate)
+    public int ExecuteUpdate(Action<UpdateSettersBuilder<TEntity>> predicate)
         => _dbSet.ExecuteUpdate(predicate);
 
     /// <summary>
@@ -370,9 +370,7 @@ public sealed class Repository<TEntity> : IRepository<TEntity> where TEntity : c
     /// <param name="predicate">Predicate</param>
     /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
     /// <returns>The total number of rows updated in the database.</returns>
-    public Task<int> ExecuteUpdateAsync(
-        Expression<Func<SetPropertyCalls<TEntity>, SetPropertyCalls<TEntity>>> predicate,
-        CancellationToken cancellationToken)
+    public Task<int> ExecuteUpdateAsync(Action<UpdateSettersBuilder<TEntity>> predicate, CancellationToken cancellationToken)
         => _dbSet.ExecuteUpdateAsync(predicate, cancellationToken);
 
     #endregion
