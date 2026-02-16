@@ -8,6 +8,10 @@
 
 ## Версии
 
+### 10.0.0 2026-01-07
+
+* Перехали на NET10 (Migration to NET10)
+
 ### 6.2.0 2025-11-21
 
 * `ServiceLifetime` for `IUnitOfWork` added as a parameter during DI-container registration.
