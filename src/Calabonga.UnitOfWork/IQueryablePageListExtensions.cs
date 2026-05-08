@@ -10,7 +10,7 @@ namespace Calabonga.UnitOfWork;
 /// <summary>
 /// Extensions for IPageList
 /// </summary>
-public static class IQueryablePageListExtensions
+public static class QueryablePageListExtensions
 {
     /// <summary>
     /// Converts the specified source to <see cref="IPagedList{T}"/> by the specified <paramref name="pageIndex"/> and <paramref name="pageSize"/>.
@@ -37,6 +37,6 @@ public static class IQueryablePageListExtensions
         var items = await source.Skip((pageIndex - indexFrom) * pageSize)
             .Take(pageSize).ToListAsync(cancellationToken).ConfigureAwait(false);
 
-        return new PagedList<T>(items, pageIndex, pageSize, indexFrom, count);
+        return new PagedList<T>(items, pageIndex, pageSize, count);
     }
 }
