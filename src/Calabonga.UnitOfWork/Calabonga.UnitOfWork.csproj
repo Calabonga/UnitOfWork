@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <Version>10.0.2</Version>
+        <Version>10.0.3</Version>
         <Authors>Calabonga</Authors>
         <Company>Calabonga SOFT</Company>
         <Copyright>Calabonga SOFT © 2001-$([System.DateTime]::Now.ToString(yyyy))</Copyright>
@@ -10,7 +10,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>logo.png</PackageIcon>
         <PackageTags>Calabonga EntityFrameworkCore UnitOfWork Repository Extension Helper unitofowrk ORM pagination pattern changes Tracking entites</PackageTags>
-        <PackageReleaseNotes>Calabonga.PagedListCore updated to 3.0.0. GetPagedList (sync) and GetPagedListAsync now share the same zero-based paging semantics with correct HasPreviousPage/HasNextPage for middle pages.</PackageReleaseNotes>
+        <PackageReleaseNotes>EntityFrameworkCore packages updated to 10.0.11.</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageProjectUrl>https://www.calabonga.net</PackageProjectUrl>
         <Nullable>enable</Nullable>
@@ -25,8 +25,8 @@
 
     <ItemGroup>
         <PackageReference Include="Calabonga.PagedListCore" Version="3.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.11" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.11" />
     </ItemGroup>
 
     <ItemGroup>

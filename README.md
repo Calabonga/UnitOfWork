@@ -8,6 +8,10 @@
 
 ## Версии
 
+### 10.0.3 2026-09-03
+
+* Обновлены пакеты EntityFrameworkCore до `10.0.11` (Updated EntityFrameworkCore packages to `10.0.11`). `Microsoft.EntityFrameworkCore.Sqlite` в тестах также поднят до `10.0.11` — уходит транзитивная уязвимость `SQLitePCLRaw` (`NU1903`, GHSA-2m69-gcr7-jv3q).
+
 ### 10.0.2 2026-09-03
 
 * Обновлён `Calabonga.PagedListCore` до `3.0.0` (Updated `Calabonga.PagedListCore` to `3.0.0`). Пакет используется только как контракт `IPagedList<T>`.
