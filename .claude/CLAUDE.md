@@ -92,11 +92,14 @@ Opt-in задан в `global.json` (секция `test.runner`) — не уда�
 - `SaveChangesAsync(params IUnitOfWork[])` заявлен как «distributed transaction»,
   но транзакции/`IExecutionStrategy` внутри нет — просто последовательные вызовы.
 - `UnitOfWork` реализует только `IDisposable`, не `IAsyncDisposable`.
-- Пагинация несогласована после апгрейда на `Calabonga.PagedListCore` 2.0.0:
-  синхронный `Repository.GetPagedList` идёт через PagedListCore и трактует
-  `pageIndex` как **1-based** (первая страница — `pageIndex: 1`), а в результате
-  кладёт `PageIndex = pageIndex - 1`; асинхронный `GetPagedListAsync` использует
-  локальный `QueryablePageListExtensions.ToPagedListAsync`, который **0-based**.
-  Значения по умолчанию (`pageIndex = 0`) для синхронного пути дают
-  `PageIndex = -1`. Зафиксировано тестами в `RepositoryReadTests` /
-  `PagedListExtensionsTests`.
+
+### Пагинация (важно)
+
+`Calabonga.PagedListCore` 2.0.0 используется только как контракт `IPagedList<T>`.
+Его класс `PagedList<T>` не применяется — у него рассогласованы `HasPreviousPage`
+(1-based) и `HasNextPage` (0-based), из-за чего средняя страница сообщает об
+отсутствии предыдущей. Вместо него — внутренний `PagedListResult<T>`
+(`PagedListResult.cs`) с корректной **0-based** математикой. Все пути
+(`GetPagedList`, `GetPagedListAsync`, `IQueryable.ToPagedList(Async)`,
+`IEnumerable.ToPagedList`) возвращают его и ведут себя одинаково: первая страница —
+`pageIndex: 0`. Не возвращать `new PagedList<T>(...)` из PagedListCore.

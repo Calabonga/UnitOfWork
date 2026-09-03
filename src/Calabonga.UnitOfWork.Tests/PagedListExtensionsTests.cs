@@ -14,10 +14,8 @@ public sealed class PagedListExtensionsTests : DatabaseTestBase
     [Fact]
     public void ToPagedList_OnEnumerable_ProducesRequestedPage()
     {
-        // Calabonga.PagedListCore 2.0.0: the pageIndex argument is 1-based for selecting
-        // items (page 2 -> items 11..20), but the resulting PageIndex property is stored
-        // 0-based (argument - 1).
-        var page = Enumerable.Range(1, 25).ToPagedList(pageIndex: 2, pageSize: 10);
+        // Zero-based: page 1 is the middle page -> items 11..20, with both neighbours.
+        var page = Enumerable.Range(1, 25).ToPagedList(pageIndex: 1, pageSize: 10);
 
         Assert.Equal(25, page.TotalCount);
         Assert.Equal(1, page.PageIndex);
@@ -25,6 +23,8 @@ public sealed class PagedListExtensionsTests : DatabaseTestBase
         Assert.Equal(3, page.TotalPages);
         Assert.Equal(10, page.Items.Count);
         Assert.Equal(11, page.Items[0]);
+        Assert.True(page.HasPreviousPage);
+        Assert.True(page.HasNextPage);
     }
 
     [Fact]

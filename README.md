@@ -8,6 +8,14 @@
 
 ## Версии
 
+### 10.0.2 2026-09-03
+
+* Исправлена несогласованность пагинации после обновления на `Calabonga.PagedListCore` 2.0.0 (Fixed inconsistent pagination after the `Calabonga.PagedListCore` 2.0.0 upgrade).
+  * `GetPagedList` (синхронный) и `GetPagedListAsync` теперь используют единую нумерацию страниц: **0-based**, первая страница — `pageIndex: 0` (значение по умолчанию).
+  * Для средних страниц корректно вычисляются `HasPreviousPage` и `HasNextPage` (ранее средняя страница сообщала об отсутствии предыдущей).
+  * Синхронный путь больше не материализует весь запрос на клиенте: `Skip`/`Take`/`Count` транслируются в SQL.
+  * `IEnumerable<T>.ToPagedList(...)` приведён к тем же 0-based правилам.
+
 ### 10.0.0 2026-01-07
 
 * Перехали на NET10 (Migration to NET10)
