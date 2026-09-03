@@ -113,13 +113,12 @@ public sealed class RepositoryReadTests : DatabaseTestBase
     [Fact]
     public void GetPagedList_FirstPage_HasExpectedMetadata()
     {
-        // The synchronous GetPagedList path delegates to Calabonga.PagedListCore: the
-        // pageIndex argument is 1-based (page 1 == first page), while the PageIndex
-        // property on the result is stored 0-based.
+        // Paging is zero-based and consistent between the sync and async paths:
+        // pageIndex 0 == first page.
         var page = ProductRepository.GetPagedList(
             predicate: x => x.CategoryId == 1,
             orderBy: q => q.OrderBy(x => x.Id),
-            pageIndex: 1,
+            pageIndex: 0,
             pageSize: 2);
 
         Assert.Equal(5, page.TotalCount);
@@ -133,18 +132,81 @@ public sealed class RepositoryReadTests : DatabaseTestBase
     }
 
     [Fact]
+    public void GetPagedList_WithDefaultPageIndex_DoesNotThrow()
+    {
+        // Calabonga.PagedListCore 3.0.0 PagedList<T> is strictly one-based and throws
+        // for pageIndex 0; the library must keep working on its default (0).
+        var page = ProductRepository.GetPagedList(predicate: x => x.CategoryId == 1);
+
+        Assert.Equal(0, page.PageIndex);
+        Assert.Equal(5, page.TotalCount);
+        Assert.Equal(5, page.Items.Count);
+        Assert.False(page.HasPreviousPage);
+    }
+
+    [Fact]
+    public async Task GetPagedListAsync_WithDefaultPageIndex_DoesNotThrow()
+    {
+        var page = await ProductRepository.GetPagedListAsync(predicate: x => x.CategoryId == 1);
+
+        Assert.Equal(0, page.PageIndex);
+        Assert.Equal(5, page.TotalCount);
+        Assert.False(page.HasPreviousPage);
+    }
+
+    [Fact]
     public void GetPagedList_LastPage_HasNoNextPage()
     {
+        // 5 rows, page size 2 -> zero-based pages 0, 1, 2; page 2 is the last.
         var page = ProductRepository.GetPagedList(
             predicate: x => x.CategoryId == 1,
             orderBy: q => q.OrderBy(x => x.Id),
-            pageIndex: 3,
+            pageIndex: 2,
             pageSize: 2);
 
         Assert.Single(page.Items);
         Assert.Equal("Webcam", page.Items[0].Name);
         Assert.True(page.HasPreviousPage);
         Assert.False(page.HasNextPage);
+    }
+
+    [Fact]
+    public void GetPagedList_MiddlePage_HasBothPreviousAndNextPage()
+    {
+        var page = ProductRepository.GetPagedList(
+            predicate: x => x.CategoryId == 1,
+            orderBy: q => q.OrderBy(x => x.Id),
+            pageIndex: 1,
+            pageSize: 2);
+
+        Assert.Equal(1, page.PageIndex);
+        Assert.Equal("Monitor", page.Items[0].Name);
+        Assert.True(page.HasPreviousPage);
+        Assert.True(page.HasNextPage);
+    }
+
+    [Fact]
+    public async Task GetPagedList_SyncAndAsync_ProduceSameMetadataForSamePage()
+    {
+        var sync = ProductRepository.GetPagedList(
+            predicate: x => x.CategoryId == 1,
+            orderBy: q => q.OrderBy(x => x.Id),
+            pageIndex: 1,
+            pageSize: 2);
+
+        var async = await ProductRepository.GetPagedListAsync(
+            predicate: x => x.CategoryId == 1,
+            orderBy: q => q.OrderBy(x => x.Id),
+            pageIndex: 1,
+            pageSize: 2);
+
+        Assert.Equal(sync.PageIndex, async.PageIndex);
+        Assert.Equal(sync.TotalPages, async.TotalPages);
+        Assert.Equal(sync.HasPreviousPage, async.HasPreviousPage);
+        Assert.Equal(sync.HasNextPage, async.HasNextPage);
+        Assert.Equal(
+            sync.Items.Select(x => x.Id),
+            async.Items.Select(x => x.Id));
     }
 
     [Fact]

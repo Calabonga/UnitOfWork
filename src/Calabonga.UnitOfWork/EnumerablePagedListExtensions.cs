@@ -1,6 +1,7 @@
-﻿using Calabonga.PagedListCore;
+using Calabonga.PagedListCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Calabonga.UnitOfWork;
 
@@ -14,12 +15,24 @@ public static class EnumerablePagedListExtensions
     /// </summary>
     /// <typeparam name="T">The type of the source.</typeparam>
     /// <param name="source">The source to paging.</param>
-    /// <param name="pageIndex">The index of the page.</param>
+    /// <param name="pageIndex">The zero-based index of the page.</param>
     /// <param name="pageSize">The size of the page.</param>
     /// <param name="indexFrom">The start index value.</param>
     /// <returns>An instance of the inherited from <see cref="IPagedList{T}"/> interface.</returns>
+    /// <remarks>Paging is zero-based: <paramref name="pageIndex"/> <c>0</c> returns the first page.</remarks>
     public static IPagedList<T> ToPagedList<T>(this IEnumerable<T> source, int pageIndex, int pageSize, int indexFrom = 0)
-        => PagedList.Create(source, pageIndex, pageSize);
+    {
+        if (indexFrom > pageIndex)
+        {
+            throw new ArgumentException(
+                $"indexFrom: {indexFrom} > pageIndex: {pageIndex}, must indexFrom <= pageIndex");
+        }
+
+        var materialized = source as IReadOnlyCollection<T> ?? source.ToList();
+        var items = materialized.Skip((pageIndex - indexFrom) * pageSize).Take(pageSize).ToList();
+
+        return new PagedListResult<T>(items, pageIndex, pageSize, materialized.Count, indexFrom);
+    }
 
     /// <summary>
     /// Converts the specified source to <see cref="IPagedList{T}"/> by the specified <paramref name="converter"/>, <paramref name="pageIndex"/> and <paramref name="pageSize"/>
@@ -32,5 +45,10 @@ public static class EnumerablePagedListExtensions
     public static IPagedList<TResult> ToPagedList<TSource, TResult>(
         this IPagedList<TSource> source,
         Func<IEnumerable<TSource>, IEnumerable<TResult>> converter)
-        => PagedList.Create<TSource, TResult>(source, converter);
+        => new PagedListResult<TResult>(
+            converter(source.Items).ToList(),
+            source.PageIndex,
+            source.PageSize,
+            source.TotalCount,
+            (source as PagedListResult<TSource>)?.IndexFrom ?? 0);
 }

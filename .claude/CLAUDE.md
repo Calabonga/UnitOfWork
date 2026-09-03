@@ -15,7 +15,7 @@ Guidance for Claude Code when working in this repository.
   публикации не входит).
 - TFM: `net10.0`
 - Зависимости: `Microsoft.EntityFrameworkCore` 10.0.1,
-  `Microsoft.EntityFrameworkCore.Relational` 10.0.1, `Calabonga.PagedListCore` 2.0.0
+  `Microsoft.EntityFrameworkCore.Relational` 10.0.1, `Calabonga.PagedListCore` 3.0.0
 - `Nullable` включён; `GeneratePackageOnBuild=true` (при каждой сборке Release
   создаётся `.nupkg` + `.snupkg`).
 - Публикация в NuGet — GitHub Actions `.github/workflows/main.yml` при push в `master`.
@@ -92,11 +92,16 @@ Opt-in задан в `global.json` (секция `test.runner`) — не уда�
 - `SaveChangesAsync(params IUnitOfWork[])` заявлен как «distributed transaction»,
   но транзакции/`IExecutionStrategy` внутри нет — просто последовательные вызовы.
 - `UnitOfWork` реализует только `IDisposable`, не `IAsyncDisposable`.
-- Пагинация несогласована после апгрейда на `Calabonga.PagedListCore` 2.0.0:
-  синхронный `Repository.GetPagedList` идёт через PagedListCore и трактует
-  `pageIndex` как **1-based** (первая страница — `pageIndex: 1`), а в результате
-  кладёт `PageIndex = pageIndex - 1`; асинхронный `GetPagedListAsync` использует
-  локальный `QueryablePageListExtensions.ToPagedListAsync`, который **0-based**.
-  Значения по умолчанию (`pageIndex = 0`) для синхронного пути дают
-  `PageIndex = -1`. Зафиксировано тестами в `RepositoryReadTests` /
-  `PagedListExtensionsTests`.
+
+### Пагинация (важно)
+
+`Calabonga.PagedListCore` 3.0.0 используется **только** как контракт `IPagedList<T>`.
+Его класс `PagedList<T>` не применяется: он строго 1-based и бросает
+`ArgumentOutOfRangeException` при `pageIndex < 1`, а библиотека сохраняет
+исторический 0-based контракт (`pageIndex = 0` по умолчанию во всех
+`IRepository.GetPagedList*`). Вместо него — внутренний `PagedListResult<T>`
+(`PagedListResult.cs`) с корректной **0-based** математикой. Все пути
+(`GetPagedList`, `GetPagedListAsync`, `IQueryable.ToPagedList(Async)`,
+`IEnumerable.ToPagedList`) возвращают его и ведут себя одинаково: первая страница —
+`pageIndex: 0`. Не вызывать `PagedList.Create(...)` / `new PagedList<T>(...)` из
+PagedListCore — упадёт на значениях по умолчанию.
