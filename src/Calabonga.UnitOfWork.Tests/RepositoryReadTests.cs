@@ -132,6 +132,29 @@ public sealed class RepositoryReadTests : DatabaseTestBase
     }
 
     [Fact]
+    public void GetPagedList_WithDefaultPageIndex_DoesNotThrow()
+    {
+        // Calabonga.PagedListCore 3.0.0 PagedList<T> is strictly one-based and throws
+        // for pageIndex 0; the library must keep working on its default (0).
+        var page = ProductRepository.GetPagedList(predicate: x => x.CategoryId == 1);
+
+        Assert.Equal(0, page.PageIndex);
+        Assert.Equal(5, page.TotalCount);
+        Assert.Equal(5, page.Items.Count);
+        Assert.False(page.HasPreviousPage);
+    }
+
+    [Fact]
+    public async Task GetPagedListAsync_WithDefaultPageIndex_DoesNotThrow()
+    {
+        var page = await ProductRepository.GetPagedListAsync(predicate: x => x.CategoryId == 1);
+
+        Assert.Equal(0, page.PageIndex);
+        Assert.Equal(5, page.TotalCount);
+        Assert.False(page.HasPreviousPage);
+    }
+
+    [Fact]
     public void GetPagedList_LastPage_HasNoNextPage()
     {
         // 5 rows, page size 2 -> zero-based pages 0, 1, 2; page 2 is the last.

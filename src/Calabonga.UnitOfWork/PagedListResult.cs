@@ -10,10 +10,12 @@ namespace Calabonga.UnitOfWork;
 /// </summary>
 /// <remarks>
 /// <para>
-/// It exists because <c>Calabonga.PagedListCore</c> 2.0.0 computes <see cref="HasPreviousPage"/>
-/// and <see cref="HasNextPage"/> with mismatched offsets, so a middle page reports itself as
-/// having no previous page. Both the synchronous and the asynchronous <c>GetPagedList</c> paths
-/// return this type to guarantee identical behaviour.
+/// It exists because <c>Calabonga.PagedListCore</c> only ships the <see cref="IPagedList{T}"/>
+/// contract that is convenient to reuse, while its own <c>PagedList&lt;T&gt;</c> is strictly
+/// one-based and throws for <c>pageIndex</c> below <c>1</c>. This library keeps the historical
+/// zero-based contract (default <c>pageIndex</c> is <c>0</c>), so both the synchronous and the
+/// asynchronous <c>GetPagedList</c> paths build this type instead to guarantee identical,
+/// zero-based behaviour.
 /// </para>
 /// <para>
 /// <see cref="PageIndex"/> is zero-based: the first page is <c>0</c>, which is also the default

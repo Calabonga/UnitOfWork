@@ -15,7 +15,7 @@ Guidance for Claude Code when working in this repository.
   публикации не входит).
 - TFM: `net10.0`
 - Зависимости: `Microsoft.EntityFrameworkCore` 10.0.1,
-  `Microsoft.EntityFrameworkCore.Relational` 10.0.1, `Calabonga.PagedListCore` 2.0.0
+  `Microsoft.EntityFrameworkCore.Relational` 10.0.1, `Calabonga.PagedListCore` 3.0.0
 - `Nullable` включён; `GeneratePackageOnBuild=true` (при каждой сборке Release
   создаётся `.nupkg` + `.snupkg`).
 - Публикация в NuGet — GitHub Actions `.github/workflows/main.yml` при push в `master`.
@@ -95,11 +95,13 @@ Opt-in задан в `global.json` (секция `test.runner`) — не уда�
 
 ### Пагинация (важно)
 
-`Calabonga.PagedListCore` 2.0.0 используется только как контракт `IPagedList<T>`.
-Его класс `PagedList<T>` не применяется — у него рассогласованы `HasPreviousPage`
-(1-based) и `HasNextPage` (0-based), из-за чего средняя страница сообщает об
-отсутствии предыдущей. Вместо него — внутренний `PagedListResult<T>`
+`Calabonga.PagedListCore` 3.0.0 используется **только** как контракт `IPagedList<T>`.
+Его класс `PagedList<T>` не применяется: он строго 1-based и бросает
+`ArgumentOutOfRangeException` при `pageIndex < 1`, а библиотека сохраняет
+исторический 0-based контракт (`pageIndex = 0` по умолчанию во всех
+`IRepository.GetPagedList*`). Вместо него — внутренний `PagedListResult<T>`
 (`PagedListResult.cs`) с корректной **0-based** математикой. Все пути
 (`GetPagedList`, `GetPagedListAsync`, `IQueryable.ToPagedList(Async)`,
 `IEnumerable.ToPagedList`) возвращают его и ведут себя одинаково: первая страница —
-`pageIndex: 0`. Не возвращать `new PagedList<T>(...)` из PagedListCore.
+`pageIndex: 0`. Не вызывать `PagedList.Create(...)` / `new PagedList<T>(...)` из
+PagedListCore — упадёт на значениях по умолчанию.
